@@ -1,6 +1,7 @@
 For Config and Context refer project specific config repo.
 
 ### Profile Management
+
 - Team people a requested to use only below profile and file format.
     ```
     dev [dev or sit]  - config_dev.properties.exclude, jslog_dev.properties.exclude, context_dev.xml
@@ -11,21 +12,27 @@ For Config and Context refer project specific config repo.
 - If no development server available uat can be used and deployed by developer.
 
 ### Building and Deployment
+
 Copy respective project config and context.xml's.
 
 #### Special Params
+
 ###### \-Dprofile
+
 - \-Dprofile=appender if you need to append a value at end of you war file name say war-pilot, war-cug etc.
 - You can run using command.```mvn clean package -Dprofile=-pilot -P cug``` **FinalName war will be : edis-pilot.war**
 - If you are not specified anything default there will be no appender.
 - _Note_
-  - if - is needed in appender then -Dprofile should contains **_-_**
-  - default value will be empty.**[if not specified]**.
+    - if - is needed in appender then -Dprofile should contains **_-_**
+    - default value will be empty.**[if not specified]**.
+
 ###### \-Ddomain
+
 - \-Ddomain=api.msxtend.com tomcat server domain.
 - default value will be localhost.**[if not specified]**.
 
 <h4 style=text-align:center>*For Developer*</h4>
+
 - Create a new server in maven settings.xml file as below.
 
 ```
@@ -35,6 +42,7 @@ Copy respective project config and context.xml's.
     <password>{your server password}</password>
   </server>
   ```
+
 - Once created run the command
 
   ```

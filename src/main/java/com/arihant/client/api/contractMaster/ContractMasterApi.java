@@ -1,8 +1,8 @@
-package com.arihant.client.api.details;
+package com.arihant.client.api.contractMaster;
 
 import com.arihant.client.*;
 import com.arihant.client.constants.Constants;
-import com.arihant.client.model.details.FundsSuccess;
+import com.arihant.client.model.login.SuccessResponse;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -11,36 +11,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FundsApi {
+public class ContractMasterApi {
     private final Constants constants;
-    private ApiClient apiClient;
+    private final ApiClient apiClient;
 
-    public FundsApi(Constants constants) {
-        this(constants, Configuration.getDefaultApiClient());
-    }
-
-    public FundsApi(Constants constants, ApiClient apiClient) {
+    public ContractMasterApi(Constants constants, ApiClient apiClient) {
         this.constants = constants;
         this.apiClient = apiClient;
     }
 
-    public ApiClient getApiClient() {
-        return apiClient;
+    public ContractMasterApi(Constants constants) {
+        this(constants, Configuration.getDefaultApiClient());
     }
 
-    public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
-
-    /**
-     * Build call for fundView
-     *
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call fundViewCall(Map<String, String> propertiesMap) throws ApiException {
+    public com.squareup.okhttp.Call contractMasterCall(Map<String, String> propertiesMap, String exch) throws ApiException {
         // create path and map variables
-        String localVarPath = constants.getEndPoints().get("funds");
+        String localVarPath = constants.getEndPoints().get("contractMaster");
 
         apiClient.setBasePath(propertiesMap.get("baseURL"));
 
@@ -63,14 +49,14 @@ public class FundsApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
         localVarHeaderParams.putAll(constants.getHeaders());
 
-        localVarQueryParams.add(new Pair("segment", "ALL"));
+        localVarQueryParams.add(new Pair("exch", exch));
 
         String[] localVarAuthNames = new String[]{};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, null, localVarHeaderParams, localVarFormParams, localVarAuthNames, null);
     }
 
-    private com.squareup.okhttp.Call fundViewValidateBeforeCall(Map<String, String> propertiesMap) throws ApiException {
-        return fundViewCall(propertiesMap);
+    private com.squareup.okhttp.Call contractMasterValidateBeforeCall(Map<String, String> propertiesMap, String exch) throws ApiException {
+        return contractMasterCall(propertiesMap, exch);
     }
 
     /**
@@ -79,8 +65,8 @@ public class FundsApi {
      * @return FundsSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public FundsSuccess fundView(Map<String, String> propertiesMap) throws ApiException {
-        ApiResponse<FundsSuccess> resp = fundViewWithHttpInfo(propertiesMap);
+    public SuccessResponse contractMaster(Map<String, String> propertiesMap, String exch) throws ApiException {
+        ApiResponse<SuccessResponse> resp = contractMasterWithHttpInfo(propertiesMap, exch);
         return resp.getData();
     }
 
@@ -90,10 +76,11 @@ public class FundsApi {
      * @return ApiResponse&lt;FundsSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<FundsSuccess> fundViewWithHttpInfo(Map<String, String> propertiesMap) throws ApiException {
-        com.squareup.okhttp.Call call = fundViewValidateBeforeCall(propertiesMap);
-        Type localVarReturnType = new TypeToken<FundsSuccess>() {
+    public ApiResponse<SuccessResponse> contractMasterWithHttpInfo(Map<String, String> propertiesMap, String exch) throws ApiException {
+        com.squareup.okhttp.Call call = contractMasterValidateBeforeCall(propertiesMap, exch);
+        Type localVarReturnType = new TypeToken<SuccessResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
+
 }

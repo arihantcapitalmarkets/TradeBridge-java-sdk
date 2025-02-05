@@ -42,6 +42,8 @@ public class Position {
         TNC("TNC"),
         @SerializedName("DELIVERY")
         DELIVERY("DELIVERY"),
+        @SerializedName("CARRYFORWARD")
+        CARRYFORWARD("CARRYFORWARD"),
         @SerializedName("NONE")
         NONE("NONE");
 

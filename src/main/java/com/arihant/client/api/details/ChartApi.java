@@ -38,16 +38,16 @@ public class ChartApi {
     /**
      * Build call for historicalData
      *
-     * @param symbol       (required)
-     * @param resolution   (required)
-     * @param from         (required)
-     * @param to           (required)
-     * @param exc          (required)
-     * @param streamSymbol (required)
+     * @param symbol     (required)
+     * @param resolution (required)
+     * @param from       (required)
+     * @param to         (required)
+     * @param exc        (required)
+     * @param streamSym  (required)
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call historicalDataCall(String symbol, String resolution, String from, String to, OrderTrailRequest.InstrumentEnum instrument, String exc, String streamSymbol, Map<String, String> propertiesMap) throws ApiException {
+    public com.squareup.okhttp.Call historicalDataCall(String symbol, String resolution, String from, String to, OrderTrailRequest.InstrumentEnum instrument, String exc, String streamSym, Map<String, String> propertiesMap) throws ApiException {
         // create path and map variables
         String localVarPath = constants.getEndPoints().get("historicalData");
 
@@ -65,8 +65,8 @@ public class ChartApi {
             localVarQueryParams.addAll(apiClient.parameterToPair("to", to));
         if (exc != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("exc", exc));
-        if (streamSymbol != null)
-            localVarQueryParams.addAll(apiClient.parameterToPair("streamSymbol", streamSymbol));
+        if (streamSym != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("streamSym", streamSym));
         if (instrument != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("instrument", instrument));
 
@@ -91,7 +91,7 @@ public class ChartApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, null, localVarHeaderParams, localVarFormParams, localVarAuthNames, null);
     }
 
-    private com.squareup.okhttp.Call historicalDataValidateBeforeCall(String symbol, String resolution, String from, String to, OrderTrailRequest.InstrumentEnum instrument, String exc, String streamSymbol, Map<String, String> propertiesMap) throws ApiException {
+    private com.squareup.okhttp.Call historicalDataValidateBeforeCall(String symbol, String resolution, String from, String to, OrderTrailRequest.InstrumentEnum instrument, String exc, String streamSym, Map<String, String> propertiesMap) throws ApiException {
         // verify the required parameter 'symbol' is set
         if (symbol == null) {
             throw new ApiException("Missing the required parameter 'symbol' when calling historicalData(Async)");
@@ -116,23 +116,23 @@ public class ChartApi {
         if (exc == null) {
             throw new ApiException("Missing the required parameter 'exc' when calling historicalData(Async)");
         }
-        // verify the required parameter 'streamSymbol' is set
-        if (streamSymbol == null) {
-            throw new ApiException("Missing the required parameter 'streamSymbol' when calling historicalData(Async)");
+        // verify the required parameter 'streamSym' is set
+        if (streamSym == null) {
+            throw new ApiException("Missing the required parameter 'streamSym' when calling historicalData(Async)");
         }
 
-        return historicalDataCall(symbol, resolution, from, to, instrument, exc, streamSymbol, propertiesMap);
+        return historicalDataCall(symbol, resolution, from, to, instrument, exc, streamSym, propertiesMap);
     }
 
     /**
      * HistoricalDataAPI
      *
-     * @param symbol       (required)
-     * @param resolution   (required)
-     * @param from         (required)
-     * @param to           (required)
-     * @param exc          (required)
-     * @param streamSymbol (required)
+     * @param symbol     (required)
+     * @param resolution (required)
+     * @param from       (required)
+     * @param to         (required)
+     * @param exc        (required)
+     * @param streamSym  (required)
      * @return HistoricalCandleDataResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -143,27 +143,27 @@ public class ChartApi {
             String to,
             OrderTrailRequest.InstrumentEnum instrument,
             String exc,
-            String streamSymbol,
+            String streamSym,
             Map<String, String> propertiesMap
     ) throws ApiException {
-        ApiResponse<HistoricalCandleDataResponse> resp = historicalDataWithHttpInfo(symbol, resolution, from, to, instrument, exc, streamSymbol, propertiesMap);
+        ApiResponse<HistoricalCandleDataResponse> resp = historicalDataWithHttpInfo(symbol, resolution, from, to, instrument, exc, streamSym, propertiesMap);
         return resp.getData();
     }
 
     /**
      * HistoricalDataAPI
      *
-     * @param symbol       (required)
-     * @param resolution   (required)
-     * @param from         (required)
-     * @param to           (required)
-     * @param exc          (required)
-     * @param streamSymbol (required)
+     * @param symbol     (required)
+     * @param resolution (required)
+     * @param from       (required)
+     * @param to         (required)
+     * @param exc        (required)
+     * @param streamSym  (required)
      * @return ApiResponse&lt;HistoricalCandleDataResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<HistoricalCandleDataResponse> historicalDataWithHttpInfo(String symbol, String resolution, String from, String to, OrderTrailRequest.InstrumentEnum instrument, String exc, String streamSymbol, Map<String, String> propertiesMap) throws ApiException {
-        com.squareup.okhttp.Call call = historicalDataValidateBeforeCall(symbol, resolution, from, to, instrument, exc, streamSymbol, propertiesMap);
+    public ApiResponse<HistoricalCandleDataResponse> historicalDataWithHttpInfo(String symbol, String resolution, String from, String to, OrderTrailRequest.InstrumentEnum instrument, String exc, String streamSym, Map<String, String> propertiesMap) throws ApiException {
+        com.squareup.okhttp.Call call = historicalDataValidateBeforeCall(symbol, resolution, from, to, instrument, exc, streamSym, propertiesMap);
         Type localVarReturnType = new TypeToken<HistoricalCandleDataResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);

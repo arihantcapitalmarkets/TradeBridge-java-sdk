@@ -97,6 +97,8 @@ public class PositionConversionRequest {
         TNC("TNC"),
         @SerializedName("DELIVERY")
         DELIVERY("DELIVERY"),
+        @SerializedName("CARRYFORWARD")
+        CARRYFORWARD("CARRYFORWARD"),
         @SerializedName("NONE")
         NONE("NONE");
 
@@ -426,8 +428,6 @@ public class PositionConversionRequest {
     @SerializedName("instrument")
     private InstrumentEnum instrument = null;
 
-    @SerializedName("id")
-    private String id = null;
 
     public PositionConversionRequest type(String type) {
         this.type = type;
@@ -619,26 +619,6 @@ public class PositionConversionRequest {
         this.instrument = instrument;
     }
 
-    public PositionConversionRequest id(String id) {
-        this.id = id;
-        return this;
-    }
-
-    /**
-     * Get id
-     *
-     * @return id
-     **/
-    @Schema(description = "")
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -657,13 +637,12 @@ public class PositionConversionRequest {
                 Objects.equals(this.excToken, positionConversionRequest.excToken) &&
                 Objects.equals(this.exc, positionConversionRequest.exc) &&
                 Objects.equals(this.lotSize, positionConversionRequest.lotSize) &&
-                Objects.equals(this.instrument, positionConversionRequest.instrument) &&
-                Objects.equals(this.id, positionConversionRequest.id);
+                Objects.equals(this.instrument, positionConversionRequest.instrument);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, ordAction, prdType, toPrdType, qty, symbol, excToken, exc, lotSize, instrument, id);
+        return Objects.hash(type, ordAction, prdType, toPrdType, qty, symbol, excToken, exc, lotSize, instrument);
     }
 
 
@@ -682,7 +661,6 @@ public class PositionConversionRequest {
         sb.append("exc: ").append(toIndentedString(exc)).append("\n");
         sb.append("lotSize: ").append(toIndentedString(lotSize)).append("\n");
         sb.append("instrument: ").append(toIndentedString(instrument)).append("\n");
-        sb.append("id: ").append(toIndentedString(id)).append("\n");
         sb.append("}");
         return sb.toString();
     }

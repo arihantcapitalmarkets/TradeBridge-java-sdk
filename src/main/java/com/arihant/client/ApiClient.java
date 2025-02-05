@@ -868,6 +868,9 @@ public class ApiClient {
             } else {
                 return deserialize(response, returnType);
             }
+        } else if (response.code() == 401) {
+            return deserialize(response, returnType);
+
         } else {
             String respBody = null;
             if (response.body() != null) {

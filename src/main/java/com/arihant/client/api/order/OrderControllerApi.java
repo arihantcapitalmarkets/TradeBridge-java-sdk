@@ -341,7 +341,9 @@ public class OrderControllerApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
-
+        localVarHeaderParams.putAll(constants.getHeaders());
+        localVarHeaderParams.put("X-latitude", latitude);
+        localVarHeaderParams.put("X-longitude", longitude);
 
         if (progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -354,9 +356,6 @@ public class OrderControllerApi {
                 }
             });
         }
-        localVarHeaderParams.putAll(constants.getHeaders());
-        localVarHeaderParams.put("X-latitude", latitude);
-        localVarHeaderParams.put("X-longitude", longitude);
 
         String[] localVarAuthNames = new String[]{};
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, body, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
@@ -367,7 +366,6 @@ public class OrderControllerApi {
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling placeOrder(Async)");
         }
-
         return placeOrderCall(body, propertiesMap, latitude, longitude, progressListener, progressRequestListener);
     }
 

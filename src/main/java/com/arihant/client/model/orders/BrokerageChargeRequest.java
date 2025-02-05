@@ -69,8 +69,8 @@ public class BrokerageChargeRequest {
         }
     }
 
-    @SerializedName("orderAction")
-    private OrderActionEnum orderAction = null;
+    @SerializedName("ordAction")
+    private OrderActionEnum ordAction = null;
 
     @SerializedName("excToken")
     private String excToken = null;
@@ -175,6 +175,8 @@ public class BrokerageChargeRequest {
         TNC("TNC"),
         @SerializedName("DELIVERY")
         DELIVERY("DELIVERY"),
+        @SerializedName("CARRYFORWARD")
+        CARRYFORWARD("CARRYFORWARD"),
         @SerializedName("NONE")
         NONE("NONE");
 
@@ -216,8 +218,8 @@ public class BrokerageChargeRequest {
         }
     }
 
-    @SerializedName("product")
-    private ProductEnum product = null;
+    @SerializedName("prdType")
+    private ProductEnum prdType = null;
 
     @SerializedName("triggerPrice")
     private String triggerPrice = null;
@@ -412,8 +414,8 @@ public class BrokerageChargeRequest {
         }
     }
 
-    @SerializedName("orderType")
-    private OrdTypeEnum orderType = null;
+    @SerializedName("ordType")
+    private OrdTypeEnum ordType = null;
 
     public BrokerageChargeRequest symbol(String symbol) {
         this.symbol = symbol;
@@ -435,7 +437,7 @@ public class BrokerageChargeRequest {
     }
 
     public BrokerageChargeRequest orderAction(OrderActionEnum orderAction) {
-        this.orderAction = orderAction;
+        this.ordAction = orderAction;
         return this;
     }
 
@@ -445,16 +447,16 @@ public class BrokerageChargeRequest {
      * @return orderAction
      **/
     @Schema(required = true, description = "")
-    public OrderActionEnum getOrderAction() {
-        return orderAction;
+    public OrderActionEnum getOrdAction() {
+        return ordAction;
     }
 
-    public void setOrderAction(OrderActionEnum orderAction) {
-        this.orderAction = orderAction;
+    public void setOrdAction(OrderActionEnum ordAction) {
+        this.ordAction = ordAction;
     }
 
     public BrokerageChargeRequest orderType(OrdTypeEnum orderType) {
-        this.orderType = orderType;
+        this.ordType = orderType;
         return this;
     }
 
@@ -465,11 +467,11 @@ public class BrokerageChargeRequest {
      **/
     @Schema(description = "")
     public OrdTypeEnum getOrdType() {
-        return orderType;
+        return ordType;
     }
 
     public void setOrdType(OrdTypeEnum orderType) {
-        this.orderType = orderType;
+        this.ordType = orderType;
     }
 
 
@@ -550,7 +552,7 @@ public class BrokerageChargeRequest {
     }
 
     public BrokerageChargeRequest product(ProductEnum product) {
-        this.product = product;
+        this.prdType = product;
         return this;
     }
 
@@ -560,12 +562,12 @@ public class BrokerageChargeRequest {
      * @return product
      **/
     @Schema(required = true, description = "")
-    public ProductEnum getProduct() {
-        return product;
+    public ProductEnum getPrdType() {
+        return prdType;
     }
 
-    public void setProduct(ProductEnum product) {
-        this.product = product;
+    public void setPrdType(ProductEnum prdType) {
+        this.prdType = prdType;
     }
 
     public BrokerageChargeRequest triggerPrice(String triggerPrice) {
@@ -617,20 +619,20 @@ public class BrokerageChargeRequest {
         }
         BrokerageChargeRequest brokerageChargeRequest = (BrokerageChargeRequest) o;
         return Objects.equals(this.symbol, brokerageChargeRequest.symbol) &&
-                Objects.equals(this.orderAction, brokerageChargeRequest.orderAction) &&
+                Objects.equals(this.ordAction, brokerageChargeRequest.ordAction) &&
                 Objects.equals(this.excToken, brokerageChargeRequest.excToken) &&
                 Objects.equals(this.exc, brokerageChargeRequest.exc) &&
                 Objects.equals(this.qty, brokerageChargeRequest.qty) &&
                 Objects.equals(this.price, brokerageChargeRequest.price) &&
-                Objects.equals(this.product, brokerageChargeRequest.product) &&
-                Objects.equals(this.orderType, brokerageChargeRequest.orderType) &&
+                Objects.equals(this.prdType, brokerageChargeRequest.prdType) &&
+                Objects.equals(this.ordType, brokerageChargeRequest.ordType) &&
                 Objects.equals(this.triggerPrice, brokerageChargeRequest.triggerPrice) &&
                 Objects.equals(this.instrument, brokerageChargeRequest.instrument);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol, orderAction, excToken, exc, qty, orderType, price, product, triggerPrice, instrument);
+        return Objects.hash(symbol, ordAction, excToken, exc, qty, ordType, price, prdType, triggerPrice, instrument);
     }
 
 
@@ -640,13 +642,13 @@ public class BrokerageChargeRequest {
         sb.append("class BrokerageChargeRequest {\n");
 
         sb.append("symbol: ").append(toIndentedString(symbol)).append("\n");
-        sb.append("orderAction: ").append(toIndentedString(orderAction)).append("\n");
+        sb.append("ordAction: ").append(toIndentedString(ordAction)).append("\n");
         sb.append("excToken: ").append(toIndentedString(excToken)).append("\n");
         sb.append("exc: ").append(toIndentedString(exc)).append("\n");
         sb.append("qty: ").append(toIndentedString(qty)).append("\n");
         sb.append("price: ").append(toIndentedString(price)).append("\n");
-        sb.append("product: ").append(toIndentedString(product)).append("\n");
-        sb.append("orderType: ").append(toIndentedString(orderType)).append("\n");
+        sb.append("prdType: ").append(toIndentedString(prdType)).append("\n");
+        sb.append("ordType: ").append(toIndentedString(ordType)).append("\n");
         sb.append("triggerPrice: ").append(toIndentedString(triggerPrice)).append("\n");
         sb.append("instrument: ").append(toIndentedString(instrument)).append("\n");
         sb.append("}");

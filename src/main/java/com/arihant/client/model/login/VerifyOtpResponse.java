@@ -1,11 +1,10 @@
 package com.arihant.client.model.login;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Objects;
 
-public class RefreshTokenResponse {
+public class VerifyOtpResponse {
     @SerializedName("infoID")
     private String infoID = null;
 
@@ -18,12 +17,16 @@ public class RefreshTokenResponse {
     @SerializedName("timestamp")
     private Long timestamp = null;
 
-    public RefreshTokenResponse infoID(String infoID) {
+    public VerifyOtpResponse(String infoID, String infoMsg, Data data, Long timestamp) {
         this.infoID = infoID;
-        return this;
+        this.infoMsg = infoMsg;
+        this.data = data;
+        this.timestamp = timestamp;
     }
 
-    @Schema(description = "Status code")
+    public VerifyOtpResponse() {
+    }
+
     public String getInfoID() {
         return infoID;
     }
@@ -32,17 +35,6 @@ public class RefreshTokenResponse {
         this.infoID = infoID;
     }
 
-    public RefreshTokenResponse infoMsg(String infoMsg) {
-        this.infoMsg = infoMsg;
-        return this;
-    }
-
-    /**
-     * Message indicating the status of the request
-     *
-     * @return message
-     **/
-    @Schema(description = "Message indicating the status of the request")
     public String getInfoMsg() {
         return infoMsg;
     }
@@ -51,17 +43,6 @@ public class RefreshTokenResponse {
         this.infoMsg = infoMsg;
     }
 
-    public RefreshTokenResponse data(Data data) {
-        this.data = data;
-        return this;
-    }
-
-    /**
-     * Data returned after successful login
-     *
-     * @return data
-     **/
-    @Schema(description = "Data returned after successful login")
     public Data getData() {
         return data;
     }
@@ -70,17 +51,6 @@ public class RefreshTokenResponse {
         this.data = data;
     }
 
-    public RefreshTokenResponse timestamp(Long timestamp) {
-        this.timestamp = timestamp;
-        return this;
-    }
-
-    /**
-     * Timestamp of the response
-     *
-     * @return timestamp
-     **/
-    @Schema(description = "Timestamp of the response")
     public Long getTimestamp() {
         return timestamp;
     }
@@ -88,7 +58,6 @@ public class RefreshTokenResponse {
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
-
 
     @Override
     public boolean equals(java.lang.Object o) {
@@ -98,7 +67,7 @@ public class RefreshTokenResponse {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        RefreshTokenResponse inlineResponse200 = (RefreshTokenResponse) o;
+        VerifyOtpResponse inlineResponse200 = (VerifyOtpResponse) o;
         return Objects.equals(this.infoID, inlineResponse200.infoID) &&
                 Objects.equals(this.infoMsg, inlineResponse200.infoMsg) &&
                 Objects.equals(this.data, inlineResponse200.data) &&
@@ -114,7 +83,7 @@ public class RefreshTokenResponse {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class RefreshTokenResponse {\n");
+        sb.append("class VerifyOtpResponse {\n");
 
         sb.append("infoID: ").append(toIndentedString(infoID)).append("\n");
         sb.append("infoMsg: ").append(toIndentedString(infoMsg)).append("\n");
@@ -123,6 +92,7 @@ public class RefreshTokenResponse {
         sb.append("   accessToken: ").append(toIndentedString(data.getAccessToken())).append("\n");
         sb.append("   userName: ").append(toIndentedString(data.getUserName())).append("\n");
         sb.append("   appId: ").append(toIndentedString(data.getAppId())).append("\n");
+        sb.append("   redirectUrl: ").append(toIndentedString(data.getRedirectUrl())).append("\n");
         sb.append("   refreshToken: ").append(toIndentedString(data.getRefreshToken())).append("\n");
         sb.append("   tokenExpiry: ").append(toIndentedString(data.getTokenExpiry())).append("\n");
         sb.append(" }").append("\n");
@@ -139,4 +109,3 @@ public class RefreshTokenResponse {
     }
 
 }
-

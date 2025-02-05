@@ -1,34 +1,22 @@
 package com.arihant.client.model.login;
 
-import com.google.gson.annotations.SerializedName;
-
+import java.util.Map;
 import java.util.Objects;
 
-/**
- * LoginResponse Body
- */
+public class SuccessResponse {
+    private String infoID;
+    private String infoMsg;
+    private Map<String, String> data;
+    private Long timestamp;
 
-public class LoginResponse {
-    @SerializedName("infoID")
-    private String infoID = null;
-
-    @SerializedName("infoMsg")
-    private String infoMsg = null;
-
-    @SerializedName("data")
-    private LoginData data = null;
-
-    @SerializedName("timestamp")
-    private Long timestamp = null;
-
-    public LoginResponse() {
-    }
-
-    public LoginResponse(String infoID, String infoMsg, LoginData data, Long timestamp) {
+    public SuccessResponse(String infoID, String infoMsg, Map<String, String> data, Long timestamp) {
         this.infoID = infoID;
         this.infoMsg = infoMsg;
         this.data = data;
         this.timestamp = timestamp;
+    }
+
+    public SuccessResponse() {
     }
 
     public String getInfoID() {
@@ -47,11 +35,11 @@ public class LoginResponse {
         this.infoMsg = infoMsg;
     }
 
-    public LoginData getData() {
+    public Map<String, String> getData() {
         return data;
     }
 
-    public void setData(LoginData data) {
+    public void setData(Map<String, String> data) {
         this.data = data;
     }
 
@@ -64,25 +52,25 @@ public class LoginResponse {
     }
 
     @Override
-    public String toString() {
-        return "LoginResponse{" +
-                "infoID='" + infoID + '\'' +
-                ", infoMsg='" + infoMsg + '\'' +
-                ", data=" + data +
-                ", timestamp=" + timestamp +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LoginResponse that = (LoginResponse) o;
+        SuccessResponse that = (SuccessResponse) o;
         return Objects.equals(infoID, that.infoID) && Objects.equals(infoMsg, that.infoMsg) && Objects.equals(data, that.data) && Objects.equals(timestamp, that.timestamp);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(infoID, infoMsg, data, timestamp);
+    }
+
+    @Override
+    public String toString() {
+        return "SuccessResponse{" +
+                "infoID='" + infoID + '\'' +
+                ", infoMsg='" + infoMsg + '\'' +
+                ", data=" + data +
+                ", timestamp=" + timestamp +
+                '}';
     }
 }

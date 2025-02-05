@@ -25,7 +25,6 @@ public class Data {
     private String userName;
     private String appId;
     private String redirectUrl;
-
     @JsonAdapter(LocalDateTimeAdapter.class)
     private LocalDateTime tokenExpiry;
 
