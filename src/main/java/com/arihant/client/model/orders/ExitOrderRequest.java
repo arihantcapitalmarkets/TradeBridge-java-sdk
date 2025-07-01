@@ -167,6 +167,22 @@ public class ExitOrderRequest {
     @SerializedName("parOrdId")
     private String parOrdId = null;
 
+    @SerializedName("remarks")
+    private String remarks = null;
+
+    public ExitOrderRequest remarks(String remarks) {
+        this.remarks = remarks;
+        return this;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
     public ExitOrderRequest symbol(String symbol) {
         this.symbol = symbol;
         return this;
@@ -296,12 +312,13 @@ public class ExitOrderRequest {
                 Objects.equals(this.prdType, exitOrderRequest.prdType) &&
                 Objects.equals(this.boOrdStatus, exitOrderRequest.boOrdStatus) &&
                 Objects.equals(this.ordId, exitOrderRequest.ordId) &&
-                Objects.equals(this.parOrdId, exitOrderRequest.parOrdId);
+                Objects.equals(this.parOrdId, exitOrderRequest.parOrdId) &&
+                Objects.equals(this.remarks, exitOrderRequest.remarks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol, exc, prdType, boOrdStatus, ordId, parOrdId);
+        return Objects.hash(symbol, exc, prdType, boOrdStatus, ordId, parOrdId, remarks);
     }
 
 
@@ -316,6 +333,7 @@ public class ExitOrderRequest {
         sb.append("boOrdStatus: ").append(toIndentedString(boOrdStatus)).append("\n");
         sb.append("ordId: ").append(toIndentedString(ordId)).append("\n");
         sb.append("parOrdId: ").append(toIndentedString(parOrdId)).append("\n");
+        sb.append("remarks: ").append(toIndentedString(remarks)).append("\n");
         sb.append("}");
         return sb.toString();
     }

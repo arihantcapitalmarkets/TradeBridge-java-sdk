@@ -37,7 +37,14 @@ public class FundsSuccessData {
     @Override
     public String toString() {
         return "FundsSuccessData{" +
-                "funds=" + funds +
+                "funds=" + toIndentedString(funds) +
                 '}';
+    }
+
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return null;
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

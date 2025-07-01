@@ -90,6 +90,22 @@ public class CancelOrderRequest {
     @SerializedName("ordId")
     private String ordId = null;
 
+    @SerializedName("remarks")
+    private String remarks = null;
+
+    public CancelOrderRequest remarks(String remarks) {
+        this.remarks = remarks;
+        return this;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
     public CancelOrderRequest symbol(String symbol) {
         this.symbol = symbol;
         return this;
@@ -159,12 +175,13 @@ public class CancelOrderRequest {
         CancelOrderRequest cancelOrderRequest = (CancelOrderRequest) o;
         return Objects.equals(this.symbol, cancelOrderRequest.symbol) &&
                 Objects.equals(this.exc, cancelOrderRequest.exc) &&
-                Objects.equals(this.ordId, cancelOrderRequest.ordId);
+                Objects.equals(this.ordId, cancelOrderRequest.ordId) &&
+                Objects.equals(this.remarks, cancelOrderRequest.remarks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol, exc, ordId);
+        return Objects.hash(symbol, exc, ordId, remarks);
     }
 
 
@@ -176,6 +193,7 @@ public class CancelOrderRequest {
         sb.append("symbol: ").append(toIndentedString(symbol)).append("\n");
         sb.append("exc: ").append(toIndentedString(exc)).append("\n");
         sb.append("ordId: ").append(toIndentedString(ordId)).append("\n");
+        sb.append("remarks: ").append(toIndentedString(remarks)).append("\n");
         sb.append("}");
         return sb.toString();
     }

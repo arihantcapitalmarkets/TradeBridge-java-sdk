@@ -4,7 +4,6 @@ import com.arihant.client.*;
 import com.arihant.client.constants.Constants;
 import com.arihant.client.model.login.SuccessResponse;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,11 +19,10 @@ public class ContractMasterApi {
         this.apiClient = apiClient;
     }
 
-    public ContractMasterApi(Constants constants) {
-        this(constants, Configuration.getDefaultApiClient());
+    public ContractMasterApi(Constants constants) {this(constants, Configuration.getDefaultApiClient());
     }
 
-    public com.squareup.okhttp.Call contractMasterCall(Map<String, String> propertiesMap, String exch) throws ApiException {
+    public com.squareup.okhttp.Call contractMasterCall(Map<String, String> propertiesMap,  String exch) throws ApiException {
         // create path and map variables
         String localVarPath = constants.getEndPoints().get("contractMaster");
 
@@ -47,7 +45,6 @@ public class ContractMasterApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
-        localVarHeaderParams.putAll(constants.getHeaders());
 
         localVarQueryParams.add(new Pair("exch", exch));
 

@@ -21,9 +21,7 @@ public class MarginCalculatorApi {
         this.apiClient = apiClient;
     }
 
-    public MarginCalculatorApi(Constants constants) {
-        this(constants, Configuration.getDefaultApiClient());
-    }
+    public MarginCalculatorApi(Constants constants) {this(constants, Configuration.getDefaultApiClient());}
 
     public com.squareup.okhttp.Call marginCalculatorCall(MarginCalculatorRequest body, Map<String, String> propertiesMap) throws ApiException {
 

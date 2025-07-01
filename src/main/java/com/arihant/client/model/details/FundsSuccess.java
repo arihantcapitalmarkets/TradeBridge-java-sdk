@@ -20,7 +20,7 @@ public class FundsSuccess {
     private String infoMsg = null;
 
     @SerializedName("timestamp")
-    private Float timestamp = null;
+    private Long timestamp = null;
 
     public FundsSuccess infoid(String infoid) {
         this.infoId = infoid;
@@ -79,7 +79,7 @@ public class FundsSuccess {
         this.infoMsg = infoMsg;
     }
 
-    public FundsSuccess timestamp(Float timestamp) {
+    public FundsSuccess timestamp(Long timestamp) {
         this.timestamp = timestamp;
         return this;
     }
@@ -90,11 +90,11 @@ public class FundsSuccess {
      * @return timestamp
      **/
     @Schema(example = "6478390.03", description = "")
-    public Float getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Float timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -123,7 +123,7 @@ public class FundsSuccess {
     @Override
     public String toString() {
 
-        return "class FundsSucess {\n" +
+        return "class FundsSuccess {\n" +
                 "    infoID: " + toIndentedString(infoId) + "\n" +
                 "    data: " + toIndentedString(data) + "\n" +
                 "    infoMsg: " + toIndentedString(infoMsg) + "\n" +
@@ -137,7 +137,7 @@ public class FundsSuccess {
      */
     private String toIndentedString(Object o) {
         if (o == null) {
-            return "null";
+            return null;
         }
         return o.toString().replace("\n", "\n    ");
     }

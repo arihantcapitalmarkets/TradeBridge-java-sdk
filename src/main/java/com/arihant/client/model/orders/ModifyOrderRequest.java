@@ -499,6 +499,22 @@ public class ModifyOrderRequest {
     @SerializedName("amo")
     private Boolean amo = null;
 
+    @SerializedName("remarks")
+    private String remarks = null;
+
+    public ModifyOrderRequest remarks(String remarks) {
+        this.remarks = remarks;
+        return this;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
     public ModifyOrderRequest triggerPrice(Double triggerPrice) {
         this.triggerPrice = triggerPrice;
         return this;
@@ -848,12 +864,13 @@ public class ModifyOrderRequest {
                 Objects.equals(this.tradedQty, modifyOrderRequest.tradedQty) &&
                 Objects.equals(this.ordValidityDays, modifyOrderRequest.ordValidityDays) &&
                 Objects.equals(this.exchangeToken, modifyOrderRequest.exchangeToken) &&
-                Objects.equals(this.amo, modifyOrderRequest.amo);
+                Objects.equals(this.amo, modifyOrderRequest.amo) &&
+                Objects.equals(this.remarks, modifyOrderRequest.remarks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(triggerPrice, ordType, prdType, instrument, exc, qty, lotSize, symbol, ordId, ordAction, limitPrice, disQty, ordValidity, tradedQty, ordValidityDays, exchangeToken, amo);
+        return Objects.hash(triggerPrice, ordType, prdType, instrument, exc, qty, lotSize, symbol, ordId, ordAction, limitPrice, disQty, ordValidity, tradedQty, ordValidityDays, exchangeToken, amo, remarks);
     }
 
 
@@ -879,6 +896,7 @@ public class ModifyOrderRequest {
         sb.append("ordValidityDays: ").append(toIndentedString(ordValidityDays)).append("\n");
         sb.append("exchangeToken: ").append(toIndentedString(exchangeToken)).append("\n");
         sb.append("amo: ").append(toIndentedString(amo)).append("\n");
+        sb.append("remarks: ").append(toIndentedString(remarks)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -187,6 +187,22 @@ public class OrderTrail {
     @SerializedName("tradedQty")
     private Integer tradedQty = null;
 
+    @SerializedName("orderUpdatedAt")
+    private String orderUpdatedAt =  null;
+
+    public OrderTrail orderUpdatedAt(String orderUpdatedAt) {
+        this.orderUpdatedAt = orderUpdatedAt;
+        return this;
+    }
+
+    @Schema(description = "")
+    public String getOrderUpdatedAt() {
+        return orderUpdatedAt;
+    }
+
+    public void setOrderUpdatedAt(String orderUpdatedAt) {
+        this.orderUpdatedAt = orderUpdatedAt;
+    }
 
     public OrderTrail limitPrice(Double limitPrice) {
         this.limitPrice = limitPrice;
@@ -517,12 +533,13 @@ public class OrderTrail {
                 Objects.equals(this.ordId, orderTrail.ordId) &&
                 Objects.equals(this.exchOrdId, orderTrail.exchOrdId) &&
                 Objects.equals(this.currentOrdStatus, orderTrail.currentOrdStatus) &&
-                Objects.equals(this.tradedQty, orderTrail.tradedQty);
+                Objects.equals(this.tradedQty, orderTrail.tradedQty) &&
+                Objects.equals(this.orderUpdatedAt, orderTrail.orderUpdatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(limitPrice, lupdateDateTime, ordDesc, modifiedBy, status, rejReason, avgPrice, qty, pendingQty, disQty, price, exc, ordId, exchOrdId, currentOrdStatus, tradedQty);
+        return Objects.hash(limitPrice, lupdateDateTime, ordDesc, modifiedBy, status, rejReason, avgPrice, qty, pendingQty, disQty, price, exc, ordId, exchOrdId, currentOrdStatus, tradedQty, orderUpdatedAt);
     }
 
 
@@ -547,6 +564,7 @@ public class OrderTrail {
         sb.append("exchOrdId: ").append(toIndentedString(exchOrdId)).append("\n");
         sb.append("currentOrdStatus: ").append(toIndentedString(currentOrdStatus)).append("\n");
         sb.append("tradedQty: ").append(toIndentedString(tradedQty)).append("\n");
+        sb.append("orderUpdatedAt: ").append(toIndentedString(orderUpdatedAt)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -337,6 +337,28 @@ public class SymbolDto {
     @SerializedName("freezeQty")
     private String freezeQty = null;
 
+    @SerializedName("tradingSymbol")
+    private String tradingSymbol = null;
+
+    @SerializedName("otherExc")
+    private Set<String> otherExc = null;
+
+    @SerializedName("isWeeklyExpiry")
+    private Boolean isWeeklyExpiry = null;
+
+    public Boolean getWeeklyExpiry() {
+        return isWeeklyExpiry;
+    }
+
+    public SymbolDto isWeeklyExpiry(Boolean isWeeklyExpiry) {
+        this.isWeeklyExpiry = isWeeklyExpiry;
+        return this;
+    }
+
+    public void setWeeklyExpiry(Boolean weeklyExpiry) {
+        isWeeklyExpiry = weeklyExpiry;
+    }
+
     public Set<String> getOtherExc() {
         return otherExc;
     }
@@ -352,11 +374,6 @@ public class SymbolDto {
     public void setTradingSymbol(String tradingSymbol) {
         this.tradingSymbol = tradingSymbol;
     }
-
-    @SerializedName("tradingSymbol")
-    private String tradingSymbol = null;
-    @SerializedName("otherExc")
-    private Set<String> otherExc = null;
 
     public SymbolDto symbol(String symbol) {
         this.symbol = symbol;
@@ -769,12 +786,13 @@ public class SymbolDto {
                 Objects.equals(this.multiplier, symbolDto.multiplier) &&
                 Objects.equals(this.freezeQty, symbolDto.freezeQty) &&
                 Objects.equals(this.tradingSymbol, symbolDto.tradingSymbol) &&
-                Objects.equals(this.otherExc, symbolDto.otherExc);
+                Objects.equals(this.otherExc, symbolDto.otherExc) &&
+                Objects.equals(this.isWeeklyExpiry, symbolDto.isWeeklyExpiry);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol, dispSym, instrument, baseSym, companyName, isin, exc, excTkn, series, lotSize, tickSize, expiryDate, optionType, strikePrice, streamSym, segment, fno, mtf, multiplier, freezeQty);
+        return Objects.hash(symbol, dispSym, instrument, baseSym, companyName, isin, exc, excTkn, series, lotSize, tickSize, expiryDate, optionType, strikePrice, streamSym, segment, fno, mtf, multiplier, freezeQty, isWeeklyExpiry);
     }
 
 
@@ -805,6 +823,7 @@ public class SymbolDto {
         sb.append("freezeQty: ").append(toIndentedString(freezeQty)).append("\n");
         sb.append("tradingSymbol: ").append(toIndentedString(tradingSymbol)).append("\n");
         sb.append("otherExc: ").append(toIndentedString(otherExc)).append("\n");
+        sb.append("isWeeklyExpiry: ").append(toIndentedString(isWeeklyExpiry)).append("\n");
         sb.append("}");
         return sb.toString();
     }

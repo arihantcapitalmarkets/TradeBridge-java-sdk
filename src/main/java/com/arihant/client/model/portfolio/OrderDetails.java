@@ -4,20 +4,20 @@ import java.util.Objects;
 
 public class OrderDetails {
     private int tradedQty = 0;
-    private TradeBook.OrdValidityEnum ordValidity = null;
-    private TradeBook.OrdActionEnum ordAction = null;
+    private OrderBook.OrdValidityEnum ordValidity = null;
+    private OrderBook.OrdActionEnum ordAction = null;
     private Double triggerPrice = 0.0;
-    private TradeBook.PrdTypeEnum prdType = null;
+    private OrderBook.PrdTypeEnum prdType = null;
     private int qty = 0;
     private int pendingQty = 0;
     private int disQty = 0;
     private Double avgPrice = 0.0;
     private String ordId = null;
-    private TradeBook.OrdTypeEnum ordType = null;
+    private OrderBook.OrdTypeEnum ordType = null;
     private String currentOrdStatus = null;
     private String rejReason = null;
 
-    public OrderDetails(int tradedQty, TradeBook.OrdValidityEnum ordValidity, TradeBook.OrdActionEnum ordAction, Double triggerPrice, TradeBook.PrdTypeEnum prdType, int qty, int pendingQty, int disQty, Double avgPrice, String ordId, TradeBook.OrdTypeEnum ordType, String currentOrdStatus, String rejReason) {
+    public OrderDetails(int tradedQty, OrderBook.OrdValidityEnum ordValidity, OrderBook.OrdActionEnum ordAction, Double triggerPrice, OrderBook.PrdTypeEnum prdType, int qty, int pendingQty, int disQty, Double avgPrice, String ordId, OrderBook.OrdTypeEnum ordType, String currentOrdStatus, String rejReason) {
         this.tradedQty = tradedQty;
         this.ordValidity = ordValidity;
         this.ordAction = ordAction;
@@ -41,19 +41,19 @@ public class OrderDetails {
         this.tradedQty = tradedQty;
     }
 
-    public TradeBook.OrdValidityEnum getOrdValidity() {
+    public OrderBook.OrdValidityEnum getOrdValidity() {
         return ordValidity;
     }
 
-    public void setOrdValidity(TradeBook.OrdValidityEnum ordValidity) {
+    public void setOrdValidity(OrderBook.OrdValidityEnum ordValidity) {
         this.ordValidity = ordValidity;
     }
 
-    public TradeBook.OrdActionEnum getOrdAction() {
+    public OrderBook.OrdActionEnum getOrdAction() {
         return ordAction;
     }
 
-    public void setOrdAction(TradeBook.OrdActionEnum ordAction) {
+    public void setOrdAction(OrderBook.OrdActionEnum ordAction) {
         this.ordAction = ordAction;
     }
 
@@ -65,11 +65,11 @@ public class OrderDetails {
         this.triggerPrice = triggerPrice;
     }
 
-    public TradeBook.PrdTypeEnum getPrdType() {
+    public OrderBook.PrdTypeEnum getPrdType() {
         return prdType;
     }
 
-    public void setPrdType(TradeBook.PrdTypeEnum prdType) {
+    public void setPrdType(OrderBook.PrdTypeEnum prdType) {
         this.prdType = prdType;
     }
 
@@ -113,11 +113,11 @@ public class OrderDetails {
         this.ordId = ordId;
     }
 
-    public TradeBook.OrdTypeEnum getOrdType() {
+    public OrderBook.OrdTypeEnum getOrdType() {
         return ordType;
     }
 
-    public void setOrdType(TradeBook.OrdTypeEnum ordType) {
+    public void setOrdType(OrderBook.OrdTypeEnum ordType) {
         this.ordType = ordType;
     }
 

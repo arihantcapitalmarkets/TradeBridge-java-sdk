@@ -38,12 +38,12 @@ public class ChartApi {
     /**
      * Build call for historicalData
      *
-     * @param symbol     (required)
-     * @param resolution (required)
-     * @param from       (required)
-     * @param to         (required)
-     * @param exc        (required)
-     * @param streamSym  (required)
+     * @param symbol       (required)
+     * @param resolution   (required)
+     * @param from         (required)
+     * @param to           (required)
+     * @param exc          (required)
+     * @param streamSym (required)
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
@@ -127,12 +127,12 @@ public class ChartApi {
     /**
      * HistoricalDataAPI
      *
-     * @param symbol     (required)
-     * @param resolution (required)
-     * @param from       (required)
-     * @param to         (required)
-     * @param exc        (required)
-     * @param streamSym  (required)
+     * @param symbol       (required)
+     * @param resolution   (required)
+     * @param from         (required)
+     * @param to           (required)
+     * @param exc          (required)
+     * @param streamSym (required)
      * @return HistoricalCandleDataResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -153,12 +153,12 @@ public class ChartApi {
     /**
      * HistoricalDataAPI
      *
-     * @param symbol     (required)
-     * @param resolution (required)
-     * @param from       (required)
-     * @param to         (required)
-     * @param exc        (required)
-     * @param streamSym  (required)
+     * @param symbol       (required)
+     * @param resolution   (required)
+     * @param from         (required)
+     * @param to           (required)
+     * @param exc          (required)
+     * @param streamSym (required)
      * @return ApiResponse&lt;HistoricalCandleDataResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */

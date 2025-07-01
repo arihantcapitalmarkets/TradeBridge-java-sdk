@@ -60,8 +60,8 @@ public class LoginApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
-        localVarHeaderParams.put("api-key", constants.apiKey);
-        localVarHeaderParams.put("source", constants.source);
+        localVarHeaderParams.put("api-key", constants.getApiKey());
+        localVarHeaderParams.put("source", constants.getSource());
 
         String[] localVarAuthNames = new String[]{};
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, body, localVarHeaderParams, localVarFormParams, localVarAuthNames, null);
@@ -159,8 +159,8 @@ public class LoginApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
-        localVarHeaderParams.put("api-key", constants.apiKey);
-        localVarHeaderParams.put("source", constants.source);
+        localVarHeaderParams.put("api-key", constants.getApiKey());
+        localVarHeaderParams.put("source", constants.getSource());
 
         String[] localVarAuthNames = new String[]{};
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, body, localVarHeaderParams, localVarFormParams, localVarAuthNames, null);
@@ -215,8 +215,8 @@ public class LoginApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
-        localVarHeaderParams.put("api-key", constants.apiKey);
-        localVarHeaderParams.put("source", constants.source);
+        localVarHeaderParams.put("api-key", constants.getApiKey());
+        localVarHeaderParams.put("source", constants.getSource());
 
         String[] localVarAuthNames = new String[]{};
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, body, localVarHeaderParams, localVarFormParams, localVarAuthNames, null);
@@ -273,8 +273,8 @@ public class LoginApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
-        localVarHeaderParams.put("api-key", constants.apiKey);
-        localVarHeaderParams.put("source", constants.source);
+        localVarHeaderParams.put("api-key", constants.getApiKey());
+        localVarHeaderParams.put("source", constants.getSource());
 
         String[] localVarAuthNames = new String[]{};
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, body, localVarHeaderParams, localVarFormParams, localVarAuthNames, null);

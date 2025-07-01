@@ -1,20 +1,15 @@
 package com.arihant.client.model.details;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Objects;
 
-/**
- * GetProfileSuccess
- */
-
-public class GetProfileSuccess {
+public class CheckMarginResponse {
     @SerializedName("infoID")
     private String infoID = null;
 
     @SerializedName("data")
-    private GetProfileSuccessData data = null;
+    private CheckMarginData data = null;
 
     @SerializedName("infoMsg")
     private String infoMsg = null;
@@ -23,14 +18,14 @@ public class GetProfileSuccess {
     private String timestamp = null;
 
 
-    public GetProfileSuccess() {
+    public CheckMarginResponse(String infoID, CheckMarginData data, String infoMsg, String timestamp) {
+        this.infoID = infoID;
+        this.data = data;
+        this.infoMsg = infoMsg;
+        this.timestamp = timestamp;
     }
 
-    public GetProfileSuccess(String infoID, String infoMsg, GetProfileSuccessData data, String timestamp) {
-        this.infoID = infoID;
-        this.infoMsg = infoMsg;
-        this.data = data;
-        this.timestamp = timestamp;
+    public CheckMarginResponse() {
     }
 
     public String getInfoID() {
@@ -41,11 +36,11 @@ public class GetProfileSuccess {
         this.infoID = infoID;
     }
 
-    public GetProfileSuccessData getData() {
+    public CheckMarginData getData() {
         return data;
     }
 
-    public void setData(GetProfileSuccessData data) {
+    public void setData(CheckMarginData data) {
         this.data = data;
     }
 
@@ -69,7 +64,7 @@ public class GetProfileSuccess {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GetProfileSuccess that = (GetProfileSuccess) o;
+        CheckMarginResponse that = (CheckMarginResponse) o;
         return Objects.equals(infoID, that.infoID) && Objects.equals(data, that.data) && Objects.equals(infoMsg, that.infoMsg) && Objects.equals(timestamp, that.timestamp);
     }
 
@@ -80,7 +75,7 @@ public class GetProfileSuccess {
 
     @Override
     public String toString() {
-        return "GetProfileSuccess{" +
+        return "CheckMarginResponse{" +
                 "infoID='" + infoID + '\'' +
                 ", data=" + data +
                 ", infoMsg='" + infoMsg + '\'' +

@@ -1,19 +1,15 @@
-package com.arihant.client.model.orders;
+package com.arihant.client.model.details;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.IOException;
 import java.util.Objects;
 
-/**
- * PlaceOrderRequest
- */
-public class PlaceOrderRequest {
+public class CheckMarginRequest {
     @SerializedName("symbol")
     private String symbol = null;
 
@@ -337,9 +333,6 @@ public class PlaceOrderRequest {
     @SerializedName("qty")
     private Integer qty = null;
 
-    @SerializedName("disQty")
-    private Integer disQty = null;
-
     @SerializedName("lotSize")
     private Integer lotSize = null;
 
@@ -487,9 +480,6 @@ public class PlaceOrderRequest {
     @SerializedName("amo")
     private Boolean amo = null;
 
-    @SerializedName("build")
-    private String build = null;
-
     @SerializedName("excToken")
     private String excToken = null;
 
@@ -499,112 +489,27 @@ public class PlaceOrderRequest {
     @SerializedName("boTgtPrice")
     private Double boTgtPrice = null;
 
-    @SerializedName("trailingSL")
-    private Double trailingSL = null;
-
-    @SerializedName("remarks")
-    private String remarks = null;
-
-    public PlaceOrderRequest remarks(String remarks) {
-        this.remarks = remarks;
-        return this;
+    public CheckMarginRequest() {
     }
 
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public PlaceOrderRequest symbol(String symbol) {
+    public CheckMarginRequest(String symbol, ExcEnum exc, OrdActionEnum ordAction, OrdValidityEnum ordValidity, OrdTypeEnum ordType, PrdTypeEnum prdType, Integer qty, Integer lotSize, Double triggerPrice, InstrumentEnum instrument, Double limitPrice, Boolean amo, String excToken, Double boStpLoss, Double boTgtPrice) {
         this.symbol = symbol;
-        return this;
-    }
-
-    /**
-     * Get symbol
-     *
-     * @return symbol
-     **/
-    @Schema(required = true, description = "")
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public PlaceOrderRequest exc(ExcEnum exc) {
         this.exc = exc;
-        return this;
-    }
-
-    /**
-     * Get exc
-     *
-     * @return exc
-     **/
-    @Schema(required = true, description = "")
-    public ExcEnum getExc() {
-        return exc;
-    }
-
-    public void setExc(ExcEnum exc) {
-        this.exc = exc;
-    }
-
-    public PlaceOrderRequest ordAction(OrdActionEnum ordAction) {
         this.ordAction = ordAction;
-        return this;
-    }
-
-    /**
-     * Get ordAction
-     *
-     * @return ordAction
-     **/
-    @Schema(required = true, description = "")
-    public OrdActionEnum getOrdAction() {
-        return ordAction;
-    }
-
-    public void setOrdAction(OrdActionEnum ordAction) {
-        this.ordAction = ordAction;
-    }
-
-    public PlaceOrderRequest ordValidity(OrdValidityEnum ordValidity) {
         this.ordValidity = ordValidity;
-        return this;
-    }
-
-    /**
-     * Get ordValidity
-     *
-     * @return ordValidity
-     **/
-    @Schema(required = true, description = "")
-    public OrdValidityEnum getOrdValidity() {
-        return ordValidity;
-    }
-
-    public void setOrdValidity(OrdValidityEnum ordValidity) {
-        this.ordValidity = ordValidity;
-    }
-
-    public PlaceOrderRequest ordType(OrdTypeEnum ordType) {
         this.ordType = ordType;
-        return this;
+        this.prdType = prdType;
+        this.qty = qty;
+        this.lotSize = lotSize;
+        this.triggerPrice = triggerPrice;
+        this.instrument = instrument;
+        this.limitPrice = limitPrice;
+        this.amo = amo;
+        this.excToken = excToken;
+        this.boStpLoss = boStpLoss;
+        this.boTgtPrice = boTgtPrice;
     }
 
-    /**
-     * Get ordType
-     *
-     * @return ordType
-     **/
-    @Schema(required = true, description = "")
     public OrdTypeEnum getOrdType() {
         return ordType;
     }
@@ -613,17 +518,38 @@ public class PlaceOrderRequest {
         this.ordType = ordType;
     }
 
-    public PlaceOrderRequest prdType(PrdTypeEnum prdType) {
-        this.prdType = prdType;
-        return this;
+    public String getSymbol() {
+        return symbol;
     }
 
-    /**
-     * Get prdType
-     *
-     * @return prdType
-     **/
-    @Schema(required = true, description = "")
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public ExcEnum getExc() {
+        return exc;
+    }
+
+    public void setExc(ExcEnum exc) {
+        this.exc = exc;
+    }
+
+    public OrdActionEnum getOrdAction() {
+        return ordAction;
+    }
+
+    public void setOrdAction(OrdActionEnum ordAction) {
+        this.ordAction = ordAction;
+    }
+
+    public OrdValidityEnum getOrdValidity() {
+        return ordValidity;
+    }
+
+    public void setOrdValidity(OrdValidityEnum ordValidity) {
+        this.ordValidity = ordValidity;
+    }
+
     public PrdTypeEnum getPrdType() {
         return prdType;
     }
@@ -632,18 +558,6 @@ public class PlaceOrderRequest {
         this.prdType = prdType;
     }
 
-    public PlaceOrderRequest qty(Integer qty) {
-        this.qty = qty;
-        return this;
-    }
-
-    /**
-     * Get qty
-     * minimum: 1
-     *
-     * @return qty
-     **/
-    @Schema(required = true, description = "")
     public Integer getQty() {
         return qty;
     }
@@ -652,36 +566,6 @@ public class PlaceOrderRequest {
         this.qty = qty;
     }
 
-    public PlaceOrderRequest disQty(Integer disQty) {
-        this.disQty = disQty;
-        return this;
-    }
-
-    /**
-     * Get disQty
-     *
-     * @return disQty
-     **/
-    @Schema(required = true, description = "")
-    public Integer getDisQty() {
-        return disQty;
-    }
-
-    public void setDisQty(Integer disQty) {
-        this.disQty = disQty;
-    }
-
-    public PlaceOrderRequest lotSize(Integer lotSize) {
-        this.lotSize = lotSize;
-        return this;
-    }
-
-    /**
-     * Get lotSize
-     *
-     * @return lotSize
-     **/
-    @Schema(required = true, description = "")
     public Integer getLotSize() {
         return lotSize;
     }
@@ -690,17 +574,6 @@ public class PlaceOrderRequest {
         this.lotSize = lotSize;
     }
 
-    public PlaceOrderRequest triggerPrice(Double triggerPrice) {
-        this.triggerPrice = triggerPrice;
-        return this;
-    }
-
-    /**
-     * Get triggerPrice
-     *
-     * @return triggerPrice
-     **/
-    @Schema(required = true, description = "")
     public Double getTriggerPrice() {
         return triggerPrice;
     }
@@ -709,17 +582,6 @@ public class PlaceOrderRequest {
         this.triggerPrice = triggerPrice;
     }
 
-    public PlaceOrderRequest instrument(InstrumentEnum instrument) {
-        this.instrument = instrument;
-        return this;
-    }
-
-    /**
-     * Get instrument
-     *
-     * @return instrument
-     **/
-    @Schema(description = "")
     public InstrumentEnum getInstrument() {
         return instrument;
     }
@@ -728,17 +590,6 @@ public class PlaceOrderRequest {
         this.instrument = instrument;
     }
 
-    public PlaceOrderRequest limitPrice(Double limitPrice) {
-        this.limitPrice = limitPrice;
-        return this;
-    }
-
-    /**
-     * Get limitPrice
-     *
-     * @return limitPrice
-     **/
-    @Schema(required = true, description = "")
     public Double getLimitPrice() {
         return limitPrice;
     }
@@ -747,18 +598,7 @@ public class PlaceOrderRequest {
         this.limitPrice = limitPrice;
     }
 
-    public PlaceOrderRequest amo(Boolean amo) {
-        this.amo = amo;
-        return this;
-    }
-
-    /**
-     * Get amo
-     *
-     * @return amo
-     **/
-    @Schema(required = true, description = "")
-    public Boolean isAmo() {
+    public Boolean getAmo() {
         return amo;
     }
 
@@ -766,36 +606,6 @@ public class PlaceOrderRequest {
         this.amo = amo;
     }
 
-    public PlaceOrderRequest build(String build) {
-        this.build = build;
-        return this;
-    }
-
-    /**
-     * Get build
-     *
-     * @return build
-     **/
-    @Schema(description = "")
-    public String getBuild() {
-        return build;
-    }
-
-    public void setBuild(String build) {
-        this.build = build;
-    }
-
-    public PlaceOrderRequest excToken(String excToken) {
-        this.excToken = excToken;
-        return this;
-    }
-
-    /**
-     * Get excToken
-     *
-     * @return excToken
-     **/
-    @Schema(description = "")
     public String getExcToken() {
         return excToken;
     }
@@ -804,17 +614,6 @@ public class PlaceOrderRequest {
         this.excToken = excToken;
     }
 
-    public PlaceOrderRequest boStpLoss(Double boStpLoss) {
-        this.boStpLoss = boStpLoss;
-        return this;
-    }
-
-    /**
-     * Get boStpLoss
-     *
-     * @return boStpLoss
-     **/
-    @Schema(description = "")
     public Double getBoStpLoss() {
         return boStpLoss;
     }
@@ -823,17 +622,6 @@ public class PlaceOrderRequest {
         this.boStpLoss = boStpLoss;
     }
 
-    public PlaceOrderRequest boTgtPrice(Double boTgtPrice) {
-        this.boTgtPrice = boTgtPrice;
-        return this;
-    }
-
-    /**
-     * Get boTgtPrice
-     *
-     * @return boTgtPrice
-     **/
-    @Schema(description = "")
     public Double getBoTgtPrice() {
         return boTgtPrice;
     }
@@ -842,99 +630,37 @@ public class PlaceOrderRequest {
         this.boTgtPrice = boTgtPrice;
     }
 
-    public PlaceOrderRequest trailingSL(Double trailingSL) {
-        this.trailingSL = trailingSL;
-        return this;
-    }
-
-    /**
-     * Get trailingSL
-     *
-     * @return trailingSL
-     **/
-    @Schema(description = "")
-    public Double getTrailingSL() {
-        return trailingSL;
-    }
-
-    public void setTrailingSL(Double trailingSL) {
-        this.trailingSL = trailingSL;
-    }
-
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        PlaceOrderRequest placeOrderRequest = (PlaceOrderRequest) o;
-        return Objects.equals(this.symbol, placeOrderRequest.symbol) &&
-                Objects.equals(this.exc, placeOrderRequest.exc) &&
-                Objects.equals(this.ordAction, placeOrderRequest.ordAction) &&
-                Objects.equals(this.ordValidity, placeOrderRequest.ordValidity) &&
-                Objects.equals(this.ordType, placeOrderRequest.ordType) &&
-                Objects.equals(this.prdType, placeOrderRequest.prdType) &&
-                Objects.equals(this.qty, placeOrderRequest.qty) &&
-                Objects.equals(this.disQty, placeOrderRequest.disQty) &&
-                Objects.equals(this.lotSize, placeOrderRequest.lotSize) &&
-                Objects.equals(this.triggerPrice, placeOrderRequest.triggerPrice) &&
-                Objects.equals(this.instrument, placeOrderRequest.instrument) &&
-                Objects.equals(this.limitPrice, placeOrderRequest.limitPrice) &&
-                Objects.equals(this.amo, placeOrderRequest.amo) &&
-                Objects.equals(this.build, placeOrderRequest.build) &&
-                Objects.equals(this.excToken, placeOrderRequest.excToken) &&
-                Objects.equals(this.boStpLoss, placeOrderRequest.boStpLoss) &&
-                Objects.equals(this.boTgtPrice, placeOrderRequest.boTgtPrice) &&
-                Objects.equals(this.trailingSL, placeOrderRequest.trailingSL) &&
-                Objects.equals(this.remarks, placeOrderRequest.remarks);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CheckMarginRequest that = (CheckMarginRequest) o;
+        return Objects.equals(symbol, that.symbol) && exc == that.exc && ordAction == that.ordAction && ordValidity == that.ordValidity && ordType == that.ordType && prdType == that.prdType && Objects.equals(qty, that.qty) && Objects.equals(lotSize, that.lotSize) && Objects.equals(triggerPrice, that.triggerPrice) && instrument == that.instrument && Objects.equals(limitPrice, that.limitPrice) && Objects.equals(amo, that.amo) && Objects.equals(excToken, that.excToken) && Objects.equals(boStpLoss, that.boStpLoss) && Objects.equals(boTgtPrice, that.boTgtPrice);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol, exc, ordAction, ordValidity, ordType, prdType, qty, disQty, lotSize, triggerPrice, instrument, limitPrice, amo, build, excToken, boStpLoss, boTgtPrice, trailingSL, remarks);
+        return Objects.hash(symbol, exc, ordAction, ordValidity, ordType, prdType, qty, lotSize, triggerPrice, instrument, limitPrice, amo, excToken, boStpLoss, boTgtPrice);
     }
-
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class PlaceOrderRequest {\n");
-
-        sb.append("symbol: ").append(toIndentedString(symbol)).append("\n");
-        sb.append("exc: ").append(toIndentedString(exc)).append("\n");
-        sb.append("ordAction: ").append(toIndentedString(ordAction)).append("\n");
-        sb.append("ordValidity: ").append(toIndentedString(ordValidity)).append("\n");
-        sb.append("ordType: ").append(toIndentedString(ordType)).append("\n");
-        sb.append("prdType: ").append(toIndentedString(prdType)).append("\n");
-        sb.append("qty: ").append(toIndentedString(qty)).append("\n");
-        sb.append("disQty: ").append(toIndentedString(disQty)).append("\n");
-        sb.append("lotSize: ").append(toIndentedString(lotSize)).append("\n");
-        sb.append("triggerPrice: ").append(toIndentedString(triggerPrice)).append("\n");
-        sb.append("instrument: ").append(toIndentedString(instrument)).append("\n");
-        sb.append("limitPrice: ").append(toIndentedString(limitPrice)).append("\n");
-        sb.append("amo: ").append(toIndentedString(amo)).append("\n");
-        sb.append("build: ").append(toIndentedString(build)).append("\n");
-        sb.append("excToken: ").append(toIndentedString(excToken)).append("\n");
-        sb.append("boStpLoss: ").append(toIndentedString(boStpLoss)).append("\n");
-        sb.append("boTgtPrice: ").append(toIndentedString(boTgtPrice)).append("\n");
-        sb.append("trailingSL: ").append(toIndentedString(trailingSL)).append("\n");
-        sb.append("remarks: ").append(toIndentedString(remarks)).append("\n");
-        sb.append("}");
-        return sb.toString();
+        return "CheckMarginRequest{" +
+                "symbol='" + symbol + '\'' +
+                ", exc=" + exc +
+                ", ordAction=" + ordAction +
+                ", ordValidity=" + ordValidity +
+                ", ordType=" + ordType +
+                ", prdType=" + prdType +
+                ", qty=" + qty +
+                ", lotSize=" + lotSize +
+                ", triggerPrice=" + triggerPrice +
+                ", instrument=" + instrument +
+                ", limitPrice=" + limitPrice +
+                ", amo=" + amo +
+                ", excToken='" + excToken + '\'' +
+                ", boStpLoss=" + boStpLoss +
+                ", boTgtPrice=" + boTgtPrice +
+                '}';
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private String toIndentedString(Object o) {
-        if (o == null) {
-            return null;
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
 }

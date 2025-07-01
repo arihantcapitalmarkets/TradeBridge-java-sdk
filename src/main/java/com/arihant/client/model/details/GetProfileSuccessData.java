@@ -22,6 +22,9 @@ public class GetProfileSuccessData {
         this.nomineeCdsl = nomineeCdsl;
     }
 
+    public GetProfileSuccessData() {
+    }
+
     public List<ProfileBankDtl> getBankDtls() {
         return bankDtls;
     }

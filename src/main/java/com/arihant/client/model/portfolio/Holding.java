@@ -35,75 +35,6 @@ public class Holding {
     @SerializedName("pledgeQty")
     private Integer pledgeQty = null;
 
-    /**
-     * Gets or Sets prdType
-     */
-    @JsonAdapter(PrdTypeEnum.Adapter.class)
-    public enum PrdTypeEnum {
-        @SerializedName("CASH")
-        CASH("CASH"),
-        @SerializedName("MTF")
-        MTF("MTF"),
-        @SerializedName("INTRADAY")
-        INTRADAY("INTRADAY"),
-        @SerializedName("MARGIN")
-        MARGIN("MARGIN"),
-        @SerializedName("SHORTSELL")
-        SHORTSELL("SHORTSELL"),
-        @SerializedName("COVER_ORDER")
-        COVER_ORDER("COVER_ORDER"),
-        @SerializedName("BRACKET_ORDER")
-        BRACKET_ORDER("BRACKET_ORDER"),
-        @SerializedName("NRML")
-        NRML("NRML"),
-        @SerializedName("TNC")
-        TNC("TNC"),
-        @SerializedName("DELIVERY")
-        DELIVERY("DELIVERY"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        PrdTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static PrdTypeEnum fromValue(String input) {
-            for (PrdTypeEnum b : PrdTypeEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<PrdTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final PrdTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public PrdTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PrdTypeEnum.fromValue((String) (value));
-            }
-        }
-    }
-
-    @SerializedName("prdType")
-    private PrdTypeEnum prdType = null;
-
     @SerializedName("avgPrice")
     private Double avgPrice = null;
 
@@ -130,6 +61,23 @@ public class Holding {
 
     @SerializedName("freeQty")
     private Integer freeQty = null;
+
+    @SerializedName("currentValue")
+    private Double currentValue = null;
+
+    @Schema(description = "")
+    public Double getCurrentValue() {
+        return currentValue;
+    }
+
+    public void setCurrentValue(Double currentValue) {
+        this.currentValue = currentValue;
+    }
+
+    public Holding currentValue(Double currentValue) {
+        this.currentValue = currentValue;
+        return this;
+    }
 
     public Holding symbol(SymbolDto symbol) {
         this.symbol = symbol;
@@ -262,25 +210,6 @@ public class Holding {
 
     public void setPledgeQty(Integer pledgeQty) {
         this.pledgeQty = pledgeQty;
-    }
-
-    public Holding prdType(PrdTypeEnum prdType) {
-        this.prdType = prdType;
-        return this;
-    }
-
-    /**
-     * Get prdType
-     *
-     * @return prdType
-     **/
-    @Schema(description = "")
-    public PrdTypeEnum getPrdType() {
-        return prdType;
-    }
-
-    public void setPrdType(PrdTypeEnum prdType) {
-        this.prdType = prdType;
     }
 
     public Holding avgPrice(Double avgPrice) {
@@ -471,7 +400,6 @@ public class Holding {
                 Objects.equals(this.usedQty, holding.usedQty) &&
                 Objects.equals(this.btst, holding.btst) &&
                 Objects.equals(this.pledgeQty, holding.pledgeQty) &&
-                Objects.equals(this.prdType, holding.prdType) &&
                 Objects.equals(this.avgPrice, holding.avgPrice) &&
                 Objects.equals(this.invested, holding.invested) &&
                 Objects.equals(this.marketValue, holding.marketValue) &&
@@ -480,12 +408,13 @@ public class Holding {
                 Objects.equals(this.haircut, holding.haircut) &&
                 Objects.equals(this.pledgeable, holding.pledgeable) &&
                 Objects.equals(this.closePrice, holding.closePrice) &&
-                Objects.equals(this.freeQty, holding.freeQty);
+                Objects.equals(this.freeQty, holding.freeQty) &&
+                Objects.equals(this.currentValue, holding.currentValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol, ltp, qty, holdingQty, usedQty, btst, pledgeQty, prdType, avgPrice, invested, marketValue, pnlPerc, unRealizedPnl, haircut, pledgeable, closePrice, freeQty);
+        return Objects.hash(symbol, ltp, qty, holdingQty, usedQty, btst, pledgeQty, avgPrice, invested, marketValue, pnlPerc, unRealizedPnl, haircut, pledgeable, closePrice, freeQty, currentValue);
     }
 
 
@@ -501,7 +430,6 @@ public class Holding {
         sb.append("usedQty: ").append(toIndentedString(usedQty)).append("\n");
         sb.append("btst: ").append(toIndentedString(btst)).append("\n");
         sb.append("pledgeQty: ").append(toIndentedString(pledgeQty)).append("\n");
-        sb.append("prdType: ").append(toIndentedString(prdType)).append("\n");
         sb.append("avgPrice: ").append(toIndentedString(avgPrice)).append("\n");
         sb.append("invested: ").append(toIndentedString(invested)).append("\n");
         sb.append("marketValue: ").append(toIndentedString(marketValue)).append("\n");
@@ -511,6 +439,7 @@ public class Holding {
         sb.append("pledgeable: ").append(toIndentedString(pledgeable)).append("\n");
         sb.append("closePrice: ").append(toIndentedString(closePrice)).append("\n");
         sb.append("freeQty: ").append(toIndentedString(freeQty)).append("\n");
+        sb.append("currentValue: ").append(toIndentedString(currentValue)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class VerifyOtpRequest {
     private String userId;
-    private String txnId;
+    private String txnId ;
     private String otp;
 
     public VerifyOtpRequest() {

@@ -13,21 +13,26 @@ public class LoginRequestBody {
     @SerializedName("userId")
     private String userId = null;
 
+    @SerializedName("mobNo")
+    private String mobNo = null;
+
+    @SerializedName("email")
+    private String email = null;
+
     @SerializedName("password")
     private String password = null;
 
-
-    public LoginRequestBody userId(String userId) {
-        this.userId = userId;
-        return this;
+    public LoginRequestBody() {
     }
 
-    /**
-     * The user ID
-     *
-     * @return userId
-     **/
-    @Schema(description = "The user ID")
+    public LoginRequestBody(String userId, String email, String mobNo, String password) {
+        this.userId = userId;
+        this.email = email;
+        this.mobNo = mobNo;
+        this.password = password;
+    }
+
+
     public String getUserId() {
         return userId;
     }
@@ -36,17 +41,22 @@ public class LoginRequestBody {
         this.userId = userId;
     }
 
-    public LoginRequestBody password(String password) {
-        this.password = password;
-        return this;
+    public String getMobNo() {
+        return mobNo;
     }
 
-    /**
-     * The user&#x27;s password
-     *
-     * @return password
-     **/
-    @Schema(description = "The user's password")
+    public void setMobNo(String mobNo) {
+        this.mobNo = mobNo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -55,46 +65,26 @@ public class LoginRequestBody {
         this.password = password;
     }
 
-
     @Override
-    public boolean equals(java.lang.Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        LoginRequestBody loginNormalloginRequestBody = (LoginRequestBody) o;
-        return Objects.equals(this.userId, loginNormalloginRequestBody.userId) &&
-                Objects.equals(this.password, loginNormalloginRequestBody.password);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LoginRequestBody that = (LoginRequestBody) o;
+        return Objects.equals(userId, that.userId) && Objects.equals(mobNo, that.mobNo) && Objects.equals(email, that.email) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, password);
+        return Objects.hash(userId, mobNo, email, password);
     }
-
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class LoginNormalloginBody {\n");
-
-        sb.append("userId: ").append(toIndentedString(userId)).append("\n");
-        sb.append("password: ").append(toIndentedString(password)).append("\n");
-        sb.append("}");
-        return sb.toString();
+        return "LoginRequestBody{" +
+                "userId='" + userId + '\'' +
+                ", mobNo='" + mobNo + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return null;
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
 }

@@ -89,6 +89,7 @@ public class VerifyOtpResponse {
         sb.append("infoMsg: ").append(toIndentedString(infoMsg)).append("\n");
         sb.append("timestamp: ").append(toIndentedString(timestamp)).append("\n");
         sb.append(" data: ").append("{").append("\n");
+        sb.append("   msxtendInfo: ").append(toIndentedString(data.getMsxtendInfo())).append("\n");
         sb.append("   accessToken: ").append(toIndentedString(data.getAccessToken())).append("\n");
         sb.append("   userName: ").append(toIndentedString(data.getUserName())).append("\n");
         sb.append("   appId: ").append(toIndentedString(data.getAppId())).append("\n");

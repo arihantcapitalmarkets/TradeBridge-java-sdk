@@ -7,10 +7,10 @@ import java.util.Objects;
 
 public class RefreshTokenResponse {
     @SerializedName("infoID")
-    private String infoID = null;
+    private String infoID = "";
 
     @SerializedName("infoMsg")
-    private String infoMsg = null;
+    private String infoMsg = "";
 
     @SerializedName("data")
     private Data data = null;

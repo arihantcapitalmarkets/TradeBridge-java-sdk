@@ -11,12 +11,9 @@ import com.arihant.client.api.login.LoginApi;
 import com.arihant.client.api.marginCalculator.MarginCalculatorApi;
 import com.arihant.client.api.order.OrderControllerApi;
 import com.arihant.client.api.portfolio.PositionControllerApi;
-import com.arihant.client.api.portfolio.TradeBookApi;
+import com.arihant.client.api.portfolio.PortfolioApi;
 import com.arihant.client.constants.Constants;
-import com.arihant.client.model.details.IntradayCandleDataRequest;
-import com.arihant.client.model.details.ProfitLossCashReportRequest;
-import com.arihant.client.model.details.ProfitLossFoReportRequest;
-import com.arihant.client.model.details.ReportFilters;
+import com.arihant.client.model.details.*;
 import com.arihant.client.model.login.*;
 import com.arihant.client.model.marginCalculator.MarginCalculatorRequest;
 import com.arihant.client.model.marginCalculator.Symbol;
@@ -77,8 +74,8 @@ public class Example {
 
     public void login(LoginApi defaultAPI, Map<String, String> properties) throws ApiException {
         LoginRequestBody body = new LoginRequestBody();
-        body.setUserId("NEST8003");
-        body.setPassword("Abcd@12342");
+        body.setMobNo("9642229195");
+        body.setPassword("Abcd@1818");
 
         System.out.println("\n\nLoginResponse: " + defaultAPI.loginPost(body, properties));
 
@@ -87,21 +84,17 @@ public class Example {
     public void verifyOtp(LoginApi defaultAPI, Map<String, String> properties) throws ApiException {
         VerifyOtpRequest body = new VerifyOtpRequest();
         body.setUserId("nest8003");
-        body.setTxnId("a92512bc-fa32-4e76-b711-994da463b29a");
-        body.setOtp("6096");
+        body.setTxnId("91abf5d1-4d9f-459d-b4f6-c4f076c7a5cb");
+        body.setOtp("8620");
 
         VerifyOtpResponse verifyOtpResponse = defaultAPI.verifyOtp(body, properties);
-        System.out.println("\n\nVerifyOtpResponse:   " + verifyOtpResponse);
-
-        String accessToken = verifyOtpResponse.getData().getAccessToken();
-        constants.setAuthString(accessToken);
-        refreshToken = verifyOtpResponse.getData().getRefreshToken();
+        System.out.println("\n\nVerifyOtpResponse:   " +verifyOtpResponse);
     }
 
-    public void resendOtp(LoginApi defaultAPI, Map<String, String> properties) throws ApiException {
+    public void resendOtp(LoginApi defaultAPI, Map<String,String> properties) throws ApiException{
         ResendOtpRequest body = new ResendOtpRequest();
         body.setUserId("nest8003");
-        body.setTxnId("b64095f1-f6d0-4a16-a45a-0777d45dc0c6");
+        body.setTxnId("ca3963d8-693d-48f8-8d30-6f62943209f2");
 
         System.out.println("\n\nResendOtpResponse:  " + defaultAPI.resendOtp(body, properties));
     }
@@ -109,7 +102,7 @@ public class Example {
     public void refreshToken(LoginApi defaultAPI, Map<String, String> properties) throws ApiException {
         RefreshTokenRequest body = new RefreshTokenRequest();
         body.setUserId("nest8003");
-        body.setRefreshToken(refreshToken);
+        body.setRefreshToken("48098d0f8e494f9797147e974de682174f6f1d54515045ea84fd6fd5aee10969");
 
         System.out.println("\n\nRefreshTokenResponse:  " + defaultAPI.refreshToken(body, properties));
     }
@@ -132,10 +125,31 @@ public class Example {
         System.out.println("\n\nFundsResponse: " + fundsApi.fundView(properties));
     }
 
+    public void checkMargin(FundsApi fundsApi, Map<String, String> properties) throws ApiException{
+        CheckMarginRequest body = new CheckMarginRequest();
+        body.setSymbol("TCS-EQ");
+        body.setOrdAction(CheckMarginRequest.OrdActionEnum.BUY);
+        body.setAmo(false);
+        body.setTriggerPrice(0.0);
+        body.setLimitPrice(3200.0);
+        body.setLotSize(1);
+        body.setBoStpLoss(0.0);
+        body.setBoTgtPrice(0.0);
+        body.setInstrument(CheckMarginRequest.InstrumentEnum.STK);
+        body.setOrdValidity(CheckMarginRequest.OrdValidityEnum.DAY);
+        body.setExcToken("11536");
+        body.setExc(CheckMarginRequest.ExcEnum.NSE);
+        body.setPrdType(CheckMarginRequest.PrdTypeEnum.DELIVERY);
+        body.setQty(5);
+        body.setOrdType(CheckMarginRequest.OrdTypeEnum.LIMIT);
+
+        System.out.println("\n\nCheckMarginResponse: " + fundsApi.checkMargin(body, properties));
+    }
+
     public void placeOrder(OrderControllerApi orderApi, Map<String, String> properties) throws ApiException {
         PlaceOrderRequest body = new PlaceOrderRequest();
         body.setSymbol("TCS-EQ");
-        body.setExcToken("532540");
+        body.setExcToken("11536");
         body.setOrdAction(PlaceOrderRequest.OrdActionEnum.BUY);
         body.setOrdValidity(PlaceOrderRequest.OrdValidityEnum.DAY);
         body.setOrdType(PlaceOrderRequest.OrdTypeEnum.MARKET);
@@ -149,9 +163,10 @@ public class Example {
         body.setLotSize(1);
         body.setAmo(false);
         body.setBuild("MOB");
-        body.setBoStpLoss(0);
-        body.setBoTgtPrice(0);
+        body.setBoStpLoss(0.0);
+        body.setBoTgtPrice(0.0);
         body.setTrailingSL(0.0);
+        body.setRemarks("place-order");
 
         String latitude = "5.666";
         String longitude = "";
@@ -180,6 +195,7 @@ public class Example {
         requestBody.setOrdValidityDays(0);
         requestBody.setExchangeToken("13528");
         requestBody.setAmo(false);
+        requestBody.setRemarks("modify-order");
 
         String latitude = "4";
         String longitude = "9.888";
@@ -191,6 +207,7 @@ public class Example {
         requestBody.setSymbol("TCS-EQ");
         requestBody.setOrdId(orderId);
         requestBody.setExc(CancelOrderRequest.ExcEnum.NSE);
+        requestBody.setRemarks("cancel-order");
 
         String latitude = "";
         String longitude = "0.77";
@@ -206,6 +223,7 @@ public class Example {
         requestBody.setParOrdId(orderId);
         requestBody.setExc(ExitOrderRequest.ExcEnum.NSE);
         requestBody.setPrdType(ExitOrderRequest.PrdTypeEnum.COVER_ORDER);
+        requestBody.setRemarks("exit-order");
 
         String latitude = "3.22";
         String longitude = "1.6666";
@@ -228,7 +246,7 @@ public class Example {
         System.out.println("\n\nBrokerageChargesResponse: " + orderApi.brokerageCharges(requestBody, properties));
     }
 
-    public void marginCalculator(MarginCalculatorApi marginCalculatorApi, Map<String, String> properties) throws ApiException {
+    public void marginCalculator(MarginCalculatorApi marginCalculatorApi, Map<String,String> properties) throws ApiException{
         Symbol symbol = new Symbol();
         symbol.setSymbol("BANKNIFTY25MARFUT");
         symbol.setNetQty(1);
@@ -248,28 +266,24 @@ public class Example {
         System.out.println("\n\nMarginCalculatorResponse: " + marginCalculatorApi.marginCalculator(request, properties));
     }
 
-    public void getTradeBook(TradeBookApi tradeBookApi, Map<String, String> properties) throws ApiException {
-        System.out.println("\n\nTradeBookResponse: " + tradeBookApi.tradeBook(properties));
+    public void getOrderBook(PortfolioApi portfolioAPI, Map<String, String> properties) throws ApiException {
+        System.out.println("\n\nOrderBookResponse: " + portfolioAPI.getOrderBook(properties));
     }
 
-    public void getOrderBook(TradeBookApi tradeBookAPI, Map<String, String> properties) throws ApiException {
-        System.out.println("\n\nOrderBookResponse: " + tradeBookAPI.getOrderBook(properties));
-    }
-
-    public void orderTrail(TradeBookApi tradeBookApi, Map<String, String> properties) throws ApiException {
+    public void orderTrail(PortfolioApi portfolioApi, Map<String, String> properties) throws ApiException {
         OrderTrailRequest requestBody = new OrderTrailRequest();
         requestBody.setInstrument(OrderTrailRequest.InstrumentEnum.STK);
-        requestBody.setOrdId("250204000000008");
+        requestBody.setOrdId("25050900000002");
 
-        System.out.println("\n\nOrderTrailResponse: " + tradeBookApi.orderTrail(requestBody, properties));
+        System.out.println("\n\nOrderTrailResponse: " + portfolioApi.orderTrail(requestBody, properties));
     }
 
-    public void orderStatus(TradeBookApi tradeBookApi, Map<String, String> properties) throws ApiException {
+    public void orderStatus(PortfolioApi portfolioApi, Map<String, String> properties) throws ApiException {
         OrderTrailRequest request = new OrderTrailRequest();
         request.setInstrument(OrderTrailRequest.InstrumentEnum.STK);
-        request.setOrdId("250204000000008");
+        request.setOrdId("25050900000002");
 
-        System.out.println("\n\nOrderStatusResponse: " + tradeBookApi.orderStatus(request, properties));
+        System.out.println("\n\nOrderStatusResponse: " + portfolioApi.orderStatus(request, properties));
     }
 
     public void getPositionBook(PositionControllerApi positionControllerApi, Map<String, String> properties) throws ApiException {
@@ -345,8 +359,8 @@ public class Example {
         data.setResolution("1day");
         data.setExc(ModifyOrderRequest.ExcEnum.NSE);
         data.setInstrument(PlaceOrderRequest.InstrumentEnum.STK);
-        data.setStartTime("2025-02-04T00:00:00.000");
-        data.setEndTime("2025-02-04T15:00:00.000");
+        data.setStartTime("2025-04-04T00:00:00.000");
+        data.setEndTime("2025-04-04T15:00:00.000");
 
         System.out.println("\n\nIntradayCandleDataResponse: " + chartApi.intraday(data, properties));
     }
@@ -359,28 +373,28 @@ public class Example {
 
         LoginApi loginApi = new LoginApi(constants);
         OrderControllerApi orderApi = new OrderControllerApi(constants);
-        TradeBookApi tradeBookApi = new TradeBookApi(constants);
+        PortfolioApi portfolioApi = new PortfolioApi(constants);
         PositionControllerApi positionControllerApi = new PositionControllerApi(constants);
         ProfitLossReportApi profitLossReportApi = new ProfitLossReportApi(constants);
         ChartApi chartApi = new ChartApi(constants);
         LoginProfileApi loginProfileApi = new LoginProfileApi(constants);
         FundsApi fundsApi = new FundsApi(constants);
         ContractMasterApi contractMasterApi = new ContractMasterApi(constants);
-        MarginCalculatorApi marginCalculatorApi = new MarginCalculatorApi(constants);
+        MarginCalculatorApi marginCalculatorApi =  new MarginCalculatorApi(constants);
 
-        constants.setApiKey("lfFmyxc2khzm862fyX");
+        constants.setApiKey("iGD1BESV8CXS71NeYj");
         constants.setSource("SDK");
-        constants.setAuthString("eyJhbGciOiJIUzUxMiJ9.eyJhcHAtaWQiOiI1ZjM2MDMwNC1kZTIxLTQxYzQtYTAzMS0wNzEwOTVjNGFiOTQiLCJsaW1pdCI6IkJBU0lDIiwic3ViIjoiTkVTVDgwMDMiLCJpYXQiOjE3Mzg2NjU5NzQsImV4cCI6MTczODY5NDc3NH0.qOabQIPXxrEAJZY2qTRKB9Ly5pRi0_1knLfJIFPwRu8i0j_wlRHOvo-vdMbY_NHcuKNWqwzgsERHEHnr42GlNA");
 
+        constants.setAuthString("eyJhbGciOiJIUzUxMiJ9.eyJhcHAtaWQiOiIwMTNkODI3Zi0xMjllLTRiNTMtYWM0Ni1lMzU2MjVmMDNmZjkiLCJsaW1pdCI6IkJBU0lDIiwic291cmNlIjoiU0RLIiwic3ViIjoiTkVTVDgwMDMiLCJpYXQiOjE3NDcwMzI0MzQsImV4cCI6MTc0NzA2MTIzNH0.8FeHO3pXyjb124UDlmMM64jGzYbgVK2DOqtL9VzVvWJjMqsfF3581ZoFx_v7SurgkH_ToNASJFGWXckbtpHuyA");
 
         // login
-        // obj.login(loginApi, properties);
+        obj.login(loginApi, properties);
 
         //verify-otp
-        //obj.verifyOtp(loginApi, properties);
+       //obj.verifyOtp(loginApi, properties);
 
         //resend-otp
-        //obj.resendOtp(loginApi, properties);
+       // obj.resendOtp(loginApi, properties);
 
         //refresh-Token
         //obj.refreshToken(loginApi, properties);
@@ -395,7 +409,10 @@ public class Example {
         //obj.getProfile(loginProfileApi,properties);
 
         //funds
-        //obj.funds(fundsApi,properties);
+       //obj.funds(fundsApi,properties);
+
+        //checkMargin
+        //obj.checkMargin(fundsApi, properties);
 
         // place order
         //obj.placeOrder(orderApi, properties);
@@ -415,17 +432,14 @@ public class Example {
         //Margin Calculator
         //obj.marginCalculator(marginCalculatorApi, properties);
 
-        // trade book
-        //obj.getTradeBook(tradeBookApi, properties);
-
         // order book
-        //obj.getOrderBook(tradeBookApi, properties);
+        //obj.getOrderBook(portfolioApi, properties);
 
         //order trail
-        //obj.orderTrail(tradeBookApi, properties);
+        //obj.orderTrail(portfolioApi, properties);
 
         //order Status
-        //obj.orderStatus(tradeBookApi,properties);
+         //obj.orderStatus(portfolioApi,properties);
 
         // Holdings
         //obj.doHoldings(positionControllerApi,properties);
@@ -443,10 +457,10 @@ public class Example {
         //obj.profitLossFoReport(profitLossReportApi,properties);
 
         //historical Data
-        // obj.historicalCandleData(chartApi,properties);
+        //obj.historicalCandleData(chartApi,properties);
 
         //Intraday Data
-        // obj.intradayCandleData(chartApi,properties);
+        //obj.intradayCandleData(chartApi,properties);
 
     }
 }

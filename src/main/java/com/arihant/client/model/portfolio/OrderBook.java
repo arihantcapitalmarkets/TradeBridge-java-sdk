@@ -395,6 +395,12 @@ public class OrderBook {
     @SerializedName("cancellable")
     private Boolean cancellable = null;
 
+    @SerializedName("orderStatus")
+    private String orderStatus = null;
+
+    @SerializedName("orderUpdatedAt")
+    private String orderUpdatedAt = null;
+
     public OrderBook symbol(SymbolDto symbol) {
         this.symbol = symbol;
         return this;
@@ -946,6 +952,32 @@ public class OrderBook {
         this.cancellable = cancellable;
     }
 
+    public OrderBook orderUpdatedAt(String orderUpdatedAt) {
+        this.orderUpdatedAt = orderUpdatedAt;
+        return this;
+    }
+
+    public OrderBook orderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+        return this;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public String getOrderUpdatedAt() {
+        return orderUpdatedAt;
+    }
+
+    public void setOrderUpdatedAt(String orderUpdatedAt) {
+        this.orderUpdatedAt = orderUpdatedAt;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -984,12 +1016,15 @@ public class OrderBook {
                 Objects.equals(this.undAsset, orderBook.undAsset) &&
                 Objects.equals(this.amo, orderBook.amo) &&
                 Objects.equals(this.modifiable, orderBook.modifiable) &&
-                Objects.equals(this.cancellable, orderBook.cancellable);
+                Objects.equals(this.cancellable, orderBook.cancellable) &&
+                Objects.equals(this.orderStatus, orderBook.orderStatus) &&
+                Objects.equals(this.orderUpdatedAt, orderBook.orderUpdatedAt);
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol, ordId, exchOrdId, parOrdId, status, ordAction, ordType, prdType, ordValidity, modifiedBy, price, triggerPrice, avgPrice, remarks, rejReason, ordDate, excOrdTime, boOrdStatus, exitable, qty, disQty, tradedQty, remainQty, cancelledQty, mktPro, undAsset, amo, modifiable, cancellable);
+        return Objects.hash(symbol, ordId, exchOrdId, parOrdId, status, ordAction, ordType, prdType, ordValidity, modifiedBy, price, triggerPrice, avgPrice, remarks, rejReason, ordDate, excOrdTime, boOrdStatus, exitable, qty, disQty, tradedQty, remainQty, cancelledQty, mktPro, undAsset, amo, modifiable, cancellable, orderStatus, orderUpdatedAt);
     }
 
 
@@ -1027,6 +1062,8 @@ public class OrderBook {
         sb.append("amo: ").append(toIndentedString(amo)).append("\n");
         sb.append("modifiable: ").append(toIndentedString(modifiable)).append("\n");
         sb.append("cancellable: ").append(toIndentedString(cancellable)).append("\n");
+        sb.append("orderStatus: ").append(toIndentedString(orderStatus)).append("\n");
+        sb.append("orderUpdatedAt: ").append(toIndentedString(orderUpdatedAt)).append("\n");
         sb.append("}");
         return sb.toString();
     }

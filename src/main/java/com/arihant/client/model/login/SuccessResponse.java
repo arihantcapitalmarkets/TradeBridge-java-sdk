@@ -6,8 +6,8 @@ import java.util.Objects;
 public class SuccessResponse {
     private String infoID;
     private String infoMsg;
-    private Map<String, String> data;
-    private Long timestamp;
+    private Map<String, String> data ;
+    private Long timestamp ;
 
     public SuccessResponse(String infoID, String infoMsg, Map<String, String> data, Long timestamp) {
         this.infoID = infoID;

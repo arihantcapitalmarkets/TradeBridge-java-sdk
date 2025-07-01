@@ -661,12 +661,18 @@ public class ApiClient {
             // ensuring a default content type
             contentType = "application/json";
         }
-        if (isJsonMime(contentType)) {
+        String mimeType = contentType.split(";")[0].trim();
+        if (isJsonMime(mimeType)) {
             return json.deserialize(respBody, returnType);
         } else if (returnType.equals(String.class)) {
             // Expecting string, return the raw response body.
             return (T) respBody;
-        } else {
+        } else if("text/plain".equalsIgnoreCase(mimeType)) {
+            // Force content type to be treated as application/json
+            contentType = "application/json";
+            // Deserialize the response body as JSON even if it was text/plain
+            return json.deserialize(respBody, returnType);
+        }else {
             throw new ApiException(
                     "Content type \"" + contentType + "\" is not supported for type: " + returnType,
                     response.code(),
@@ -867,10 +873,11 @@ public class ApiClient {
                 return null;
             } else {
                 return deserialize(response, returnType);
-            }
+           }
         } else if (response.code() == 401) {
-            return deserialize(response, returnType);
-
+            return deserialize(response,returnType);
+        } else if (response.code() == 403) {
+            return deserialize(response,returnType);
         } else {
             String respBody = null;
             if (response.body() != null) {

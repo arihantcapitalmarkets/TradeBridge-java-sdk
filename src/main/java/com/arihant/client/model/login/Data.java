@@ -14,6 +14,7 @@ import org.threeten.bp.temporal.ChronoField;
 import java.io.IOException;
 
 public class Data {
+    private String msxtendInfo;
     private String accessToken;
     private String refreshToken;
     private String expiryTime;
@@ -43,6 +44,10 @@ public class Data {
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
     }
+
+    public String getMsxtendInfo() { return msxtendInfo; }
+
+    public void setMsxtendInfo(String msxtendInfo) { this.msxtendInfo = msxtendInfo; }
 
     public String getRefreshToken() {
         return refreshToken;
