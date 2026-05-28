@@ -18,9 +18,6 @@ public class OrderTrail {
     @SerializedName("lupdateDateTime")
     private String lupdateDateTime = null;
 
-    @SerializedName("ordDesc")
-    private String ordDesc = null;
-
     @SerializedName("modifiedBy")
     private String modifiedBy = null;
 
@@ -42,20 +39,8 @@ public class OrderTrail {
     @SerializedName("disQty")
     private Integer disQty = null;
 
-    @SerializedName("price")
-    private Double price = null;
-
     @SerializedName("exc")
     private ExcEnum exc = null;
-
-    @SerializedName("ordId")
-    private String ordId = null;
-
-    @SerializedName("exchOrdId")
-    private String exchOrdId = null;
-
-    @SerializedName("currentOrdStatus")
-    private String currentOrdStatus = null;
 
     @SerializedName("tradedQty")
     private Integer tradedQty = null;
@@ -113,25 +98,6 @@ public class OrderTrail {
 
     public void setLupdateDateTime(String lupdateDateTime) {
         this.lupdateDateTime = lupdateDateTime;
-    }
-
-    public OrderTrail ordDesc(String ordDesc) {
-        this.ordDesc = ordDesc;
-        return this;
-    }
-
-    /**
-     * Get ordDesc
-     *
-     * @return ordDesc
-     **/
-    @Schema(description = "")
-    public String getOrdDesc() {
-        return ordDesc;
-    }
-
-    public void setOrdDesc(String ordDesc) {
-        this.ordDesc = ordDesc;
     }
 
     public OrderTrail modifiedBy(String modifiedBy) {
@@ -267,25 +233,6 @@ public class OrderTrail {
         this.disQty = disQty;
     }
 
-    public OrderTrail price(Double price) {
-        this.price = price;
-        return this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return price
-     **/
-    @Schema(description = "")
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     public OrderTrail exc(ExcEnum exc) {
         this.exc = exc;
         return this;
@@ -303,63 +250,6 @@ public class OrderTrail {
 
     public void setExc(ExcEnum exc) {
         this.exc = exc;
-    }
-
-    public OrderTrail ordId(String ordId) {
-        this.ordId = ordId;
-        return this;
-    }
-
-    /**
-     * Get ordId
-     *
-     * @return ordId
-     **/
-    @Schema(description = "")
-    public String getOrdId() {
-        return ordId;
-    }
-
-    public void setOrdId(String ordId) {
-        this.ordId = ordId;
-    }
-
-    public OrderTrail exchOrdId(String exchOrdId) {
-        this.exchOrdId = exchOrdId;
-        return this;
-    }
-
-    /**
-     * Get exchOrdId
-     *
-     * @return exchOrdId
-     **/
-    @Schema(description = "")
-    public String getExchOrdId() {
-        return exchOrdId;
-    }
-
-    public void setExchOrdId(String exchOrdId) {
-        this.exchOrdId = exchOrdId;
-    }
-
-    public OrderTrail currentOrdStatus(String currentOrdStatus) {
-        this.currentOrdStatus = currentOrdStatus;
-        return this;
-    }
-
-    /**
-     * Get currentOrdStatus
-     *
-     * @return currentOrdStatus
-     **/
-    @Schema(description = "")
-    public String getCurrentOrdStatus() {
-        return currentOrdStatus;
-    }
-
-    public void setCurrentOrdStatus(String currentOrdStatus) {
-        this.currentOrdStatus = currentOrdStatus;
     }
 
     public OrderTrail tradedQty(Integer tradedQty) {
@@ -393,7 +283,6 @@ public class OrderTrail {
         OrderTrail orderTrail = (OrderTrail) o;
         return Objects.equals(this.limitPrice, orderTrail.limitPrice) &&
                 Objects.equals(this.lupdateDateTime, orderTrail.lupdateDateTime) &&
-                Objects.equals(this.ordDesc, orderTrail.ordDesc) &&
                 Objects.equals(this.modifiedBy, orderTrail.modifiedBy) &&
                 Objects.equals(this.status, orderTrail.status) &&
                 Objects.equals(this.rejReason, orderTrail.rejReason) &&
@@ -401,18 +290,14 @@ public class OrderTrail {
                 Objects.equals(this.qty, orderTrail.qty) &&
                 Objects.equals(this.pendingQty, orderTrail.pendingQty) &&
                 Objects.equals(this.disQty, orderTrail.disQty) &&
-                Objects.equals(this.price, orderTrail.price) &&
                 Objects.equals(this.exc, orderTrail.exc) &&
-                Objects.equals(this.ordId, orderTrail.ordId) &&
-                Objects.equals(this.exchOrdId, orderTrail.exchOrdId) &&
-                Objects.equals(this.currentOrdStatus, orderTrail.currentOrdStatus) &&
                 Objects.equals(this.tradedQty, orderTrail.tradedQty) &&
                 Objects.equals(this.orderUpdatedAt, orderTrail.orderUpdatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(limitPrice, lupdateDateTime, ordDesc, modifiedBy, status, rejReason, avgPrice, qty, pendingQty, disQty, price, exc, ordId, exchOrdId, currentOrdStatus, tradedQty, orderUpdatedAt);
+        return Objects.hash(limitPrice, lupdateDateTime, modifiedBy, status, rejReason, avgPrice, qty, pendingQty, disQty, exc, tradedQty, orderUpdatedAt);
     }
 
 
@@ -423,7 +308,6 @@ public class OrderTrail {
 
         sb.append("limitPrice: ").append(toIndentedString(limitPrice)).append("\n");
         sb.append("lupdateDateTime: ").append(toIndentedString(lupdateDateTime)).append("\n");
-        sb.append("ordDesc: ").append(toIndentedString(ordDesc)).append("\n");
         sb.append("modifiedBy: ").append(toIndentedString(modifiedBy)).append("\n");
         sb.append("status: ").append(toIndentedString(status)).append("\n");
         sb.append("rejReason: ").append(toIndentedString(rejReason)).append("\n");
@@ -431,11 +315,7 @@ public class OrderTrail {
         sb.append("qty: ").append(toIndentedString(qty)).append("\n");
         sb.append("pendingQty: ").append(toIndentedString(pendingQty)).append("\n");
         sb.append("disQty: ").append(toIndentedString(disQty)).append("\n");
-        sb.append("price: ").append(toIndentedString(price)).append("\n");
         sb.append("exc: ").append(toIndentedString(exc)).append("\n");
-        sb.append("ordId: ").append(toIndentedString(ordId)).append("\n");
-        sb.append("exchOrdId: ").append(toIndentedString(exchOrdId)).append("\n");
-        sb.append("currentOrdStatus: ").append(toIndentedString(currentOrdStatus)).append("\n");
         sb.append("tradedQty: ").append(toIndentedString(tradedQty)).append("\n");
         sb.append("orderUpdatedAt: ").append(toIndentedString(orderUpdatedAt)).append("\n");
         sb.append("}");
