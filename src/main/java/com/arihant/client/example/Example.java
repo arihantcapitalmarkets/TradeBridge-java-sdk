@@ -83,7 +83,7 @@ public class Example {
 
     public void verifyOtp(LoginApi defaultAPI, Map<String, String> properties) throws ApiException {
         VerifyOtpRequest body = new VerifyOtpRequest();
-        body.setUserId("nest8003");
+        body.setUserId("nest**03");
         body.setTxnId("91abf5d1-4d9f-459d-b4f6-c4f076c7a5cb");
         body.setOtp("8620");
 
