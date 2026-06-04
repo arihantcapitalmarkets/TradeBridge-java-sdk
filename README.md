@@ -171,16 +171,10 @@ System.out.println("\n\nHoldingsResponse:  " +
 
 # Running the Example
 
-Run from your IDE or using Maven:
+Run from your IDE:
 
 ```bash
 mvn clean compile
-```
-
-or
-
-```bash
-mvn exec:java
 ```
 
 You can also run:
