@@ -1,7 +1,7 @@
 package com.arihant.client.model.details;
 
-import com.arihant.client.model.orders.ModifyOrderRequest;
-import com.arihant.client.model.orders.PlaceOrderRequest;
+import com.arihant.client.enums.ExcEnum;
+import com.arihant.client.enums.InstrumentEnum;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
@@ -18,10 +18,10 @@ public class IntradayCandleDataRequest {
     private String resolution = null;
 
     @SerializedName("instrument")
-    private PlaceOrderRequest.InstrumentEnum instrument = null;
+    private InstrumentEnum instrument = null;
 
     @SerializedName("exc")
-    private ModifyOrderRequest.ExcEnum exc = null;
+    private ExcEnum exc = null;
 
     @SerializedName("startTime")
     private String startTime = null;
@@ -30,7 +30,7 @@ public class IntradayCandleDataRequest {
     private String endTime = null;
 
 
-    public IntradayCandleDataRequest(String symbol, String resolution, PlaceOrderRequest.InstrumentEnum instrument, ModifyOrderRequest.ExcEnum exc, String startTime, String endTime) {
+    public IntradayCandleDataRequest(String symbol, String resolution, InstrumentEnum instrument, ExcEnum exc, String startTime, String endTime) {
         this.symbol = symbol;
         this.resolution = resolution;
         this.instrument = instrument;
@@ -59,19 +59,19 @@ public class IntradayCandleDataRequest {
         this.resolution = resolution;
     }
 
-    public PlaceOrderRequest.InstrumentEnum getInstrument() {
+    public InstrumentEnum getInstrument() {
         return instrument;
     }
 
-    public void setInstrument(PlaceOrderRequest.InstrumentEnum instrument) {
+    public void setInstrument(InstrumentEnum instrument) {
         this.instrument = instrument;
     }
 
-    public ModifyOrderRequest.ExcEnum getExc() {
+    public ExcEnum getExc() {
         return exc;
     }
 
-    public void setExc(ModifyOrderRequest.ExcEnum exc) {
+    public void setExc(ExcEnum exc) {
         this.exc = exc;
     }
 

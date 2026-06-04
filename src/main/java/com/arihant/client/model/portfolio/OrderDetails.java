@@ -1,23 +1,28 @@
 package com.arihant.client.model.portfolio;
 
+import com.arihant.client.enums.OrdActionEnum;
+import com.arihant.client.enums.OrdTypeEnum;
+import com.arihant.client.enums.OrdValidityEnum;
+import com.arihant.client.enums.PrdTypeEnum;
+
 import java.util.Objects;
 
 public class OrderDetails {
     private int tradedQty = 0;
-    private OrderBook.OrdValidityEnum ordValidity = null;
-    private OrderBook.OrdActionEnum ordAction = null;
+    private OrdValidityEnum ordValidity = null;
+    private OrdActionEnum ordAction = null;
     private Double triggerPrice = 0.0;
-    private OrderBook.PrdTypeEnum prdType = null;
+    private PrdTypeEnum prdType = null;
     private int qty = 0;
     private int pendingQty = 0;
     private int disQty = 0;
     private Double avgPrice = 0.0;
     private String ordId = null;
-    private OrderBook.OrdTypeEnum ordType = null;
+    private OrdTypeEnum ordType = null;
     private String currentOrdStatus = null;
     private String rejReason = null;
 
-    public OrderDetails(int tradedQty, OrderBook.OrdValidityEnum ordValidity, OrderBook.OrdActionEnum ordAction, Double triggerPrice, OrderBook.PrdTypeEnum prdType, int qty, int pendingQty, int disQty, Double avgPrice, String ordId, OrderBook.OrdTypeEnum ordType, String currentOrdStatus, String rejReason) {
+    public OrderDetails(int tradedQty, OrdValidityEnum ordValidity, OrdActionEnum ordAction, Double triggerPrice, PrdTypeEnum prdType, int qty, int pendingQty, int disQty, Double avgPrice, String ordId, OrdTypeEnum ordType, String currentOrdStatus, String rejReason) {
         this.tradedQty = tradedQty;
         this.ordValidity = ordValidity;
         this.ordAction = ordAction;
@@ -41,19 +46,19 @@ public class OrderDetails {
         this.tradedQty = tradedQty;
     }
 
-    public OrderBook.OrdValidityEnum getOrdValidity() {
+    public OrdValidityEnum getOrdValidity() {
         return ordValidity;
     }
 
-    public void setOrdValidity(OrderBook.OrdValidityEnum ordValidity) {
+    public void setOrdValidity(OrdValidityEnum ordValidity) {
         this.ordValidity = ordValidity;
     }
 
-    public OrderBook.OrdActionEnum getOrdAction() {
+    public OrdActionEnum getOrdAction() {
         return ordAction;
     }
 
-    public void setOrdAction(OrderBook.OrdActionEnum ordAction) {
+    public void setOrdAction(OrdActionEnum ordAction) {
         this.ordAction = ordAction;
     }
 
@@ -65,11 +70,11 @@ public class OrderDetails {
         this.triggerPrice = triggerPrice;
     }
 
-    public OrderBook.PrdTypeEnum getPrdType() {
+    public PrdTypeEnum getPrdType() {
         return prdType;
     }
 
-    public void setPrdType(OrderBook.PrdTypeEnum prdType) {
+    public void setPrdType(PrdTypeEnum prdType) {
         this.prdType = prdType;
     }
 
@@ -113,11 +118,11 @@ public class OrderDetails {
         this.ordId = ordId;
     }
 
-    public OrderBook.OrdTypeEnum getOrdType() {
+    public OrdTypeEnum getOrdType() {
         return ordType;
     }
 
-    public void setOrdType(OrderBook.OrdTypeEnum ordType) {
+    public void setOrdType(OrdTypeEnum ordType) {
         this.ordType = ordType;
     }
 

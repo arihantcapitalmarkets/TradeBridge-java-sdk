@@ -13,24 +13,25 @@ public class GetProfileSuccess {
     @SerializedName("infoID")
     private String infoID = null;
 
-    @SerializedName("data")
-    private GetProfileSuccessData data = null;
-
     @SerializedName("infoMsg")
     private String infoMsg = null;
 
     @SerializedName("timestamp")
     private String timestamp = null;
 
+    @SerializedName("data")
+    private GetProfileSuccessData data = null;
 
-    public GetProfileSuccess() {
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        GetProfileSuccess that = (GetProfileSuccess) o;
+        return Objects.equals(infoID, that.infoID) && Objects.equals(infoMsg, that.infoMsg) && Objects.equals(timestamp, that.timestamp) && Objects.equals(data, that.data);
     }
 
-    public GetProfileSuccess(String infoID, String infoMsg, GetProfileSuccessData data, String timestamp) {
-        this.infoID = infoID;
-        this.infoMsg = infoMsg;
-        this.data = data;
-        this.timestamp = timestamp;
+    @Override
+    public int hashCode() {
+        return Objects.hash(infoID, infoMsg, timestamp, data);
     }
 
     public String getInfoID() {
@@ -39,14 +40,6 @@ public class GetProfileSuccess {
 
     public void setInfoID(String infoID) {
         this.infoID = infoID;
-    }
-
-    public GetProfileSuccessData getData() {
-        return data;
-    }
-
-    public void setData(GetProfileSuccessData data) {
-        this.data = data;
     }
 
     public String getInfoMsg() {
@@ -65,26 +58,21 @@ public class GetProfileSuccess {
         this.timestamp = timestamp;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GetProfileSuccess that = (GetProfileSuccess) o;
-        return Objects.equals(infoID, that.infoID) && Objects.equals(data, that.data) && Objects.equals(infoMsg, that.infoMsg) && Objects.equals(timestamp, that.timestamp);
+    public GetProfileSuccessData getData() {
+        return data;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(infoID, data, infoMsg, timestamp);
+    public void setData(GetProfileSuccessData data) {
+        this.data = data;
     }
 
     @Override
     public String toString() {
         return "GetProfileSuccess{" +
                 "infoID='" + infoID + '\'' +
-                ", data=" + data +
                 ", infoMsg='" + infoMsg + '\'' +
                 ", timestamp='" + timestamp + '\'' +
+                ", data=" + data +
                 '}';
     }
 }

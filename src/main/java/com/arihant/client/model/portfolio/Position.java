@@ -1,13 +1,10 @@
 package com.arihant.client.model.portfolio;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+import com.arihant.client.enums.OrdActionEnum;
+import com.arihant.client.enums.PrdTypeEnum;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -16,74 +13,6 @@ import java.util.Objects;
 public class Position {
     @SerializedName("symbol")
     private SymbolDto symbol = null;
-
-    /**
-     * Gets or Sets prdType
-     */
-    @JsonAdapter(PrdTypeEnum.Adapter.class)
-    public enum PrdTypeEnum {
-        @SerializedName("CASH")
-        CASH("CASH"),
-        @SerializedName("MTF")
-        MTF("MTF"),
-        @SerializedName("INTRADAY")
-        INTRADAY("INTRADAY"),
-        @SerializedName("MARGIN")
-        MARGIN("MARGIN"),
-        @SerializedName("SHORTSELL")
-        SHORTSELL("SHORTSELL"),
-        @SerializedName("COVER_ORDER")
-        COVER_ORDER("COVER_ORDER"),
-        @SerializedName("BRACKET_ORDER")
-        BRACKET_ORDER("BRACKET_ORDER"),
-        @SerializedName("NRML")
-        NRML("NRML"),
-        @SerializedName("TNC")
-        TNC("TNC"),
-        @SerializedName("DELIVERY")
-        DELIVERY("DELIVERY"),
-        @SerializedName("CARRYFORWARD")
-        CARRYFORWARD("CARRYFORWARD"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        PrdTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static PrdTypeEnum fromValue(String input) {
-            for (PrdTypeEnum b : PrdTypeEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<PrdTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final PrdTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public PrdTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PrdTypeEnum.fromValue((String) (value));
-            }
-        }
-    }
 
     @SerializedName("prdType")
     private PrdTypeEnum prdType = null;
@@ -180,58 +109,6 @@ public class Position {
 
     @SerializedName("transferable")
     private Boolean transferable = null;
-
-    /**
-     * Gets or Sets ordAction
-     */
-    @JsonAdapter(OrdActionEnum.Adapter.class)
-    public enum OrdActionEnum {
-        @SerializedName("BUY")
-        BUY("BUY"),
-        @SerializedName("SELL")
-        SELL("SELL"),
-        @SerializedName("SHORT")
-        SHORT("SHORT"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        OrdActionEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static OrdActionEnum fromValue(String input) {
-            for (OrdActionEnum b : OrdActionEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<OrdActionEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final OrdActionEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public OrdActionEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return OrdActionEnum.fromValue((String) (value));
-            }
-        }
-    }
 
     @SerializedName("ordAction")
     private OrdActionEnum ordAction = null;

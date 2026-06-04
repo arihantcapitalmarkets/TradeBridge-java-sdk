@@ -1,13 +1,12 @@
 package com.arihant.client.model.portfolio;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+import com.arihant.client.enums.ExcEnum;
+import com.arihant.client.enums.InstrumentEnum;
+import com.arihant.client.enums.OrdActionEnum;
+import com.arihant.client.enums.PrdTypeEnum;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -17,200 +16,14 @@ public class PositionConversionRequest {
     @SerializedName("type")
     private String type = null;
 
-    /**
-     * Gets or Sets ordAction
-     */
-    @JsonAdapter(OrdActionEnum.Adapter.class)
-    public enum OrdActionEnum {
-        @SerializedName("BUY")
-        BUY("BUY"),
-        @SerializedName("SELL")
-        SELL("SELL"),
-        @SerializedName("SHORT")
-        SHORT("SHORT"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        OrdActionEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static OrdActionEnum fromValue(String input) {
-            for (OrdActionEnum b : OrdActionEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<OrdActionEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final OrdActionEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public OrdActionEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return OrdActionEnum.fromValue((String) (value));
-            }
-        }
-    }
-
     @SerializedName("ordAction")
     private OrdActionEnum ordAction = null;
-
-    /**
-     * Gets or Sets prdType
-     */
-    @JsonAdapter(PrdTypeEnum.Adapter.class)
-    public enum PrdTypeEnum {
-        @SerializedName("CASH")
-        CASH("CASH"),
-        @SerializedName("MTF")
-        MTF("MTF"),
-        @SerializedName("INTRADAY")
-        INTRADAY("INTRADAY"),
-        @SerializedName("MARGIN")
-        MARGIN("MARGIN"),
-        @SerializedName("SHORTSELL")
-        SHORTSELL("SHORTSELL"),
-        @SerializedName("COVER_ORDER")
-        COVER_ORDER("COVER_ORDER"),
-        @SerializedName("BRACKET_ORDER")
-        BRACKET_ORDER("BRACKET_ORDER"),
-        @SerializedName("NRML")
-        NRML("NRML"),
-        @SerializedName("TNC")
-        TNC("TNC"),
-        @SerializedName("DELIVERY")
-        DELIVERY("DELIVERY"),
-        @SerializedName("CARRYFORWARD")
-        CARRYFORWARD("CARRYFORWARD"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        PrdTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static PrdTypeEnum fromValue(String input) {
-            for (PrdTypeEnum b : PrdTypeEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<PrdTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final PrdTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public PrdTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PrdTypeEnum.fromValue((String) (value));
-            }
-        }
-    }
 
     @SerializedName("prdType")
     private PrdTypeEnum prdType = null;
 
-    /**
-     * Gets or Sets toPrdType
-     */
-    @JsonAdapter(ToPrdTypeEnum.Adapter.class)
-    public enum ToPrdTypeEnum {
-        @SerializedName("CASH")
-        CASH("CASH"),
-        @SerializedName("MTF")
-        MTF("MTF"),
-        @SerializedName("INTRADAY")
-        INTRADAY("INTRADAY"),
-        @SerializedName("MARGIN")
-        MARGIN("MARGIN"),
-        @SerializedName("SHORTSELL")
-        SHORTSELL("SHORTSELL"),
-        @SerializedName("COVER_ORDER")
-        COVER_ORDER("COVER_ORDER"),
-        @SerializedName("BRACKET_ORDER")
-        BRACKET_ORDER("BRACKET_ORDER"),
-        @SerializedName("NRML")
-        NRML("NRML"),
-        @SerializedName("TNC")
-        TNC("TNC"),
-        @SerializedName("DELIVERY")
-        DELIVERY("DELIVERY"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        ToPrdTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ToPrdTypeEnum fromValue(String input) {
-            for (ToPrdTypeEnum b : ToPrdTypeEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<ToPrdTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ToPrdTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public ToPrdTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ToPrdTypeEnum.fromValue((String) (value));
-            }
-        }
-    }
-
     @SerializedName("toPrdType")
-    private ToPrdTypeEnum toPrdType = null;
+    private PrdTypeEnum toPrdType = null;
 
     @SerializedName("qty")
     private Integer qty = null;
@@ -221,209 +34,11 @@ public class PositionConversionRequest {
     @SerializedName("excToken")
     private String excToken = null;
 
-    /**
-     * Gets or Sets exc
-     */
-    @JsonAdapter(ExcEnum.Adapter.class)
-    public enum ExcEnum {
-        @SerializedName("NSE")
-        NSE("NSE"),
-        @SerializedName("BSE")
-        BSE("BSE"),
-        @SerializedName("NFO")
-        NFO("NFO"),
-        @SerializedName("BFO")
-        BFO("BFO"),
-        @SerializedName("CDS")
-        CDS("CDS"),
-        @SerializedName("BCD")
-        BCD("BCD"),
-        @SerializedName("MCXSX")
-        MCXSX("MCXSX"),
-        @SerializedName("MCX")
-        MCX("MCX"),
-        @SerializedName("NCO")
-        NCO("NCO"),
-        @SerializedName("BCO")
-        BCO("BCO"),
-        @SerializedName("ICEX")
-        ICEX("ICEX");
-
-        private String value;
-
-        ExcEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ExcEnum fromValue(String input) {
-            for (ExcEnum b : ExcEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<ExcEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ExcEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public ExcEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ExcEnum.fromValue((String) (value));
-            }
-        }
-    }
-
     @SerializedName("exc")
     private ExcEnum exc = null;
 
     @SerializedName("lotSize")
     private Integer lotSize = null;
-
-    /**
-     * Gets or Sets instrument
-     */
-    @JsonAdapter(InstrumentEnum.Adapter.class)
-    public enum InstrumentEnum {
-        @SerializedName("STK")
-        STK("STK"),
-        @SerializedName("ETF")
-        ETF("ETF"),
-        @SerializedName("IDX")
-        IDX("IDX"),
-        @SerializedName("COM")
-        COM("COM"),
-        @SerializedName("UNDCUR")
-        UNDCUR("UNDCUR"),
-        @SerializedName("CUR")
-        CUR("CUR"),
-        @SerializedName("FUTIVX")
-        FUTIVX("FUTIVX"),
-        @SerializedName("FUTSTK")
-        FUTSTK("FUTSTK"),
-        @SerializedName("FUTIDX")
-        FUTIDX("FUTIDX"),
-        @SerializedName("FUTCUR")
-        FUTCUR("FUTCUR"),
-        @SerializedName("FUTIRD")
-        FUTIRD("FUTIRD"),
-        @SerializedName("FUTIRC")
-        FUTIRC("FUTIRC"),
-        @SerializedName("FUTIRT")
-        FUTIRT("FUTIRT"),
-        @SerializedName("FUTIRF")
-        FUTIRF("FUTIRF"),
-        @SerializedName("FUTCOM")
-        FUTCOM("FUTCOM"),
-        @SerializedName("FUTBLN")
-        FUTBLN("FUTBLN"),
-        @SerializedName("FUTENR")
-        FUTENR("FUTENR"),
-        @SerializedName("FUTMET")
-        FUTMET("FUTMET"),
-        @SerializedName("FUTAGR")
-        FUTAGR("FUTAGR"),
-        @SerializedName("OPTIDX")
-        OPTIDX("OPTIDX"),
-        @SerializedName("OPTSTK")
-        OPTSTK("OPTSTK"),
-        @SerializedName("OPTCOM")
-        OPTCOM("OPTCOM"),
-        @SerializedName("OPTBLN")
-        OPTBLN("OPTBLN"),
-        @SerializedName("OPTENR")
-        OPTENR("OPTENR"),
-        @SerializedName("OPTAGR")
-        OPTAGR("OPTAGR"),
-        @SerializedName("OPTCUR")
-        OPTCUR("OPTCUR"),
-        @SerializedName("OPTIRC")
-        OPTIRC("OPTIRC"),
-        @SerializedName("OPTIRD")
-        OPTIRD("OPTIRD"),
-        @SerializedName("UNDCOM")
-        UNDCOM("UNDCOM"),
-        @SerializedName("AUCSO")
-        AUCSO("AUCSO"),
-        @SerializedName("FUTIDXSPR")
-        FUTIDXSPR("FUTIDXSPR"),
-        @SerializedName("FUTSTKSPR")
-        FUTSTKSPR("FUTSTKSPR"),
-        @SerializedName("FUTCURSPR")
-        FUTCURSPR("FUTCURSPR"),
-        @SerializedName("FUTIRTSPR")
-        FUTIRTSPR("FUTIRTSPR"),
-        @SerializedName("FUTIRCSPR")
-        FUTIRCSPR("FUTIRCSPR"),
-        @SerializedName("FUTIRDSPR")
-        FUTIRDSPR("FUTIRDSPR"),
-        @SerializedName("OPTCURSPR")
-        OPTCURSPR("OPTCURSPR"),
-        @SerializedName("OPTIRCSPR")
-        OPTIRCSPR("OPTIRCSPR"),
-        @SerializedName("FUTCOMSPR")
-        FUTCOMSPR("FUTCOMSPR"),
-        @SerializedName("OPTCOMSPR")
-        OPTCOMSPR("OPTCOMSPR"),
-        @SerializedName("UNDIRC")
-        UNDIRC("UNDIRC"),
-        @SerializedName("UNDIRD")
-        UNDIRD("UNDIRD"),
-        @SerializedName("UNDIRT")
-        UNDIRT("UNDIRT"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        InstrumentEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static InstrumentEnum fromValue(String input) {
-            for (InstrumentEnum b : InstrumentEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<InstrumentEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final InstrumentEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public InstrumentEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return InstrumentEnum.fromValue((String) (value));
-            }
-        }
-    }
 
     @SerializedName("instrument")
     private InstrumentEnum instrument = null;
@@ -486,7 +101,7 @@ public class PositionConversionRequest {
         this.prdType = prdType;
     }
 
-    public PositionConversionRequest toPrdType(ToPrdTypeEnum toPrdType) {
+    public PositionConversionRequest toPrdType(PrdTypeEnum toPrdType) {
         this.toPrdType = toPrdType;
         return this;
     }
@@ -497,11 +112,11 @@ public class PositionConversionRequest {
      * @return toPrdType
      **/
     @Schema(description = "")
-    public ToPrdTypeEnum getToPrdType() {
+    public PrdTypeEnum getToPrdType() {
         return toPrdType;
     }
 
-    public void setToPrdType(ToPrdTypeEnum toPrdType) {
+    public void setToPrdType(PrdTypeEnum toPrdType) {
         this.toPrdType = toPrdType;
     }
 

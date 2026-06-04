@@ -56,28 +56,8 @@ public class Holding {
     @SerializedName("pledgeable")
     private Boolean pledgeable = null;
 
-    @SerializedName("closePrice")
-    private Double closePrice = null;
-
     @SerializedName("freeQty")
     private Integer freeQty = null;
-
-    @SerializedName("currentValue")
-    private Double currentValue = null;
-
-    @Schema(description = "")
-    public Double getCurrentValue() {
-        return currentValue;
-    }
-
-    public void setCurrentValue(Double currentValue) {
-        this.currentValue = currentValue;
-    }
-
-    public Holding currentValue(Double currentValue) {
-        this.currentValue = currentValue;
-        return this;
-    }
 
     public Holding symbol(SymbolDto symbol) {
         this.symbol = symbol;
@@ -345,25 +325,6 @@ public class Holding {
         this.pledgeable = pledgeable;
     }
 
-    public Holding closePrice(Double closePrice) {
-        this.closePrice = closePrice;
-        return this;
-    }
-
-    /**
-     * Get closePrice
-     *
-     * @return closePrice
-     **/
-    @Schema(description = "")
-    public Double getClosePrice() {
-        return closePrice;
-    }
-
-    public void setClosePrice(Double closePrice) {
-        this.closePrice = closePrice;
-    }
-
     public Holding freeQty(Integer freeQty) {
         this.freeQty = freeQty;
         return this;
@@ -407,14 +368,12 @@ public class Holding {
                 Objects.equals(this.unRealizedPnl, holding.unRealizedPnl) &&
                 Objects.equals(this.haircut, holding.haircut) &&
                 Objects.equals(this.pledgeable, holding.pledgeable) &&
-                Objects.equals(this.closePrice, holding.closePrice) &&
-                Objects.equals(this.freeQty, holding.freeQty) &&
-                Objects.equals(this.currentValue, holding.currentValue);
+                Objects.equals(this.freeQty, holding.freeQty);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol, ltp, qty, holdingQty, usedQty, btst, pledgeQty, avgPrice, invested, marketValue, pnlPerc, unRealizedPnl, haircut, pledgeable, closePrice, freeQty, currentValue);
+        return Objects.hash(symbol, ltp, qty, holdingQty, usedQty, btst, pledgeQty, avgPrice, invested, marketValue, pnlPerc, unRealizedPnl, haircut, pledgeable, freeQty);
     }
 
 
@@ -437,9 +396,7 @@ public class Holding {
         sb.append("unRealizedPnl: ").append(toIndentedString(unRealizedPnl)).append("\n");
         sb.append("haircut: ").append(toIndentedString(haircut)).append("\n");
         sb.append("pledgeable: ").append(toIndentedString(pledgeable)).append("\n");
-        sb.append("closePrice: ").append(toIndentedString(closePrice)).append("\n");
         sb.append("freeQty: ").append(toIndentedString(freeQty)).append("\n");
-        sb.append("currentValue: ").append(toIndentedString(currentValue)).append("\n");
         sb.append("}");
         return sb.toString();
     }

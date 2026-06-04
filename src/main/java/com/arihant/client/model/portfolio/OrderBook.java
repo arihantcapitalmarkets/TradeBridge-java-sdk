@@ -1,13 +1,9 @@
 package com.arihant.client.model.portfolio;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+import com.arihant.client.enums.*;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -26,311 +22,17 @@ public class OrderBook {
     @SerializedName("parOrdId")
     private String parOrdId = null;
 
-    /**
-     * Gets or Sets status
-     */
-    @JsonAdapter(StatusEnum.Adapter.class)
-    public enum StatusEnum {
-        @SerializedName("Executed")
-        EXECUTED("Executed"),
-        @SerializedName("Pending")
-        PENDING("Pending"),
-        @SerializedName("Cancelled")
-        CANCELLED("Cancelled"),
-        @SerializedName("Transit")
-        TRANSIT("Transit"),
-        @SerializedName("Rejected")
-        REJECTED("Rejected"),
-        @SerializedName("Requested")
-        REQUESTED("Requested"),
-        @SerializedName("None")
-        NONE("None");
-
-        private String value;
-
-        StatusEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static StatusEnum fromValue(String input) {
-            for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<StatusEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StatusEnum.fromValue((String) (value));
-            }
-        }
-    }
-
     @SerializedName("status")
-    private StatusEnum status = null;
-
-    /**
-     * Gets or Sets ordAction
-     */
-    @JsonAdapter(OrdActionEnum.Adapter.class)
-    public enum OrdActionEnum {
-        @SerializedName("BUY")
-        BUY("BUY"),
-        @SerializedName("SELL")
-        SELL("SELL"),
-        @SerializedName("SHORT")
-        SHORT("SHORT"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        OrdActionEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static OrdActionEnum fromValue(String input) {
-            for (OrdActionEnum b : OrdActionEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<OrdActionEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final OrdActionEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public OrdActionEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return OrdActionEnum.fromValue((String) (value));
-            }
-        }
-    }
+    private OrdStatusEnum status = null;
 
     @SerializedName("ordAction")
     private OrdActionEnum ordAction = null;
 
-    /**
-     * Gets or Sets ordType
-     */
-    @JsonAdapter(OrdTypeEnum.Adapter.class)
-    public enum OrdTypeEnum {
-        @SerializedName("Market")
-        MARKET("Market"),
-        @SerializedName("Limit")
-        LIMIT("Limit"),
-        @SerializedName("Stop")
-        STOP("Stop"),
-        @SerializedName("Stop-loss")
-        STOP_LOSS("Stop-loss"),
-        @SerializedName("SL-M")
-        SL_M("SL-M"),
-        @SerializedName("SL")
-        SL("SL"),
-        @SerializedName("None")
-        NONE("None");
-
-        private String value;
-
-        OrdTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static OrdTypeEnum fromValue(String input) {
-            for (OrdTypeEnum b : OrdTypeEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<OrdTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final OrdTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public OrdTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return OrdTypeEnum.fromValue((String) (value));
-            }
-        }
-    }
-
     @SerializedName("ordType")
     private OrdTypeEnum ordType = null;
 
-    /**
-     * Gets or Sets prdType
-     */
-    @JsonAdapter(PrdTypeEnum.Adapter.class)
-    public enum PrdTypeEnum {
-        @SerializedName("CASH")
-        CASH("CASH"),
-        @SerializedName("MTF")
-        MTF("MTF"),
-        @SerializedName("INTRADAY")
-        INTRADAY("INTRADAY"),
-        @SerializedName("MARGIN")
-        MARGIN("MARGIN"),
-        @SerializedName("SHORTSELL")
-        SHORTSELL("SHORTSELL"),
-        @SerializedName("COVER_ORDER")
-        COVER_ORDER("COVER_ORDER"),
-        @SerializedName("BRACKET_ORDER")
-        BRACKET_ORDER("BRACKET_ORDER"),
-        @SerializedName("NRML")
-        NRML("NRML"),
-        @SerializedName("TNC")
-        TNC("TNC"),
-        @SerializedName("DELIVERY")
-        DELIVERY("DELIVERY"),
-        @SerializedName("CARRYFORWARD")
-        CARRYFORWARD("CARRYFORWARD"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        PrdTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static PrdTypeEnum fromValue(String input) {
-            for (PrdTypeEnum b : PrdTypeEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<PrdTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final PrdTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public PrdTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PrdTypeEnum.fromValue((String) (value));
-            }
-        }
-    }
-
     @SerializedName("prdType")
     private PrdTypeEnum prdType = null;
-
-    /**
-     * Gets or Sets ordValidity
-     */
-    @JsonAdapter(OrdValidityEnum.Adapter.class)
-    public enum OrdValidityEnum {
-        @SerializedName("DAY")
-        DAY("DAY"),
-        @SerializedName("IOC")
-        IOC("IOC"),
-        @SerializedName("GMT")
-        GMT("GMT"),
-        @SerializedName("GTC")
-        GTC("GTC"),
-        @SerializedName("AMO")
-        AMO("AMO"),
-        @SerializedName("GTD")
-        GTD("GTD"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        OrdValidityEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static OrdValidityEnum fromValue(String input) {
-            for (OrdValidityEnum b : OrdValidityEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<OrdValidityEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final OrdValidityEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public OrdValidityEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return OrdValidityEnum.fromValue((String) (value));
-            }
-        }
-    }
 
     @SerializedName("ordValidity")
     private OrdValidityEnum ordValidity = null;
@@ -395,11 +97,16 @@ public class OrderBook {
     @SerializedName("cancellable")
     private Boolean cancellable = null;
 
-    @SerializedName("orderStatus")
-    private String orderStatus = null;
+    @SerializedName("excAlgoId")
+    private String excAlgoId = null;
 
-    @SerializedName("orderUpdatedAt")
-    private String orderUpdatedAt = null;
+    public String getExcAlgoId() {
+        return excAlgoId;
+    }
+
+    public void setExcAlgoId(String excAlgoId) {
+        this.excAlgoId = excAlgoId;
+    }
 
     public OrderBook symbol(SymbolDto symbol) {
         this.symbol = symbol;
@@ -477,7 +184,7 @@ public class OrderBook {
         this.parOrdId = parOrdId;
     }
 
-    public OrderBook status(StatusEnum status) {
+    public OrderBook status(OrdStatusEnum status) {
         this.status = status;
         return this;
     }
@@ -488,11 +195,11 @@ public class OrderBook {
      * @return status
      **/
     @Schema(description = "")
-    public StatusEnum getStatus() {
+    public OrdStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(OrdStatusEnum status) {
         this.status = status;
     }
 
@@ -952,33 +659,6 @@ public class OrderBook {
         this.cancellable = cancellable;
     }
 
-    public OrderBook orderUpdatedAt(String orderUpdatedAt) {
-        this.orderUpdatedAt = orderUpdatedAt;
-        return this;
-    }
-
-    public OrderBook orderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-        return this;
-    }
-
-    public String getOrderStatus() {
-        return orderStatus;
-    }
-
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public String getOrderUpdatedAt() {
-        return orderUpdatedAt;
-    }
-
-    public void setOrderUpdatedAt(String orderUpdatedAt) {
-        this.orderUpdatedAt = orderUpdatedAt;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -1017,14 +697,13 @@ public class OrderBook {
                 Objects.equals(this.amo, orderBook.amo) &&
                 Objects.equals(this.modifiable, orderBook.modifiable) &&
                 Objects.equals(this.cancellable, orderBook.cancellable) &&
-                Objects.equals(this.orderStatus, orderBook.orderStatus) &&
-                Objects.equals(this.orderUpdatedAt, orderBook.orderUpdatedAt);
+                Objects.equals(this.excAlgoId, orderBook.excAlgoId);
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol, ordId, exchOrdId, parOrdId, status, ordAction, ordType, prdType, ordValidity, modifiedBy, price, triggerPrice, avgPrice, remarks, rejReason, ordDate, excOrdTime, boOrdStatus, exitable, qty, disQty, tradedQty, remainQty, cancelledQty, mktPro, undAsset, amo, modifiable, cancellable, orderStatus, orderUpdatedAt);
+        return Objects.hash(symbol, ordId, exchOrdId, parOrdId, status, ordAction, ordType, prdType, ordValidity, modifiedBy, price, triggerPrice, avgPrice, remarks, rejReason, ordDate, excOrdTime, boOrdStatus, exitable, qty, disQty, tradedQty, remainQty, cancelledQty, mktPro, undAsset, amo, modifiable, cancellable, excAlgoId);
     }
 
 
@@ -1062,8 +741,7 @@ public class OrderBook {
         sb.append("amo: ").append(toIndentedString(amo)).append("\n");
         sb.append("modifiable: ").append(toIndentedString(modifiable)).append("\n");
         sb.append("cancellable: ").append(toIndentedString(cancellable)).append("\n");
-        sb.append("orderStatus: ").append(toIndentedString(orderStatus)).append("\n");
-        sb.append("orderUpdatedAt: ").append(toIndentedString(orderUpdatedAt)).append("\n");
+        sb.append("excAlgoId: ").append(toIndentedString(excAlgoId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

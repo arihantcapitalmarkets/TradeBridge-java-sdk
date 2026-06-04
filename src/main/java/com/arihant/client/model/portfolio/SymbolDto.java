@@ -1,14 +1,12 @@
 package com.arihant.client.model.portfolio;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+import com.arihant.client.enums.ExcEnum;
+import com.arihant.client.enums.InstrumentEnum;
+import com.arihant.client.enums.SegmentEnum;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.threeten.bp.LocalDate;
 
-import java.io.IOException;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,138 +21,6 @@ public class SymbolDto {
     @SerializedName("dispSym")
     private String dispSym = null;
 
-    /**
-     * Gets or Sets instrument
-     */
-    @JsonAdapter(InstrumentEnum.Adapter.class)
-    public enum InstrumentEnum {
-        @SerializedName("STK")
-        STK("STK"),
-        @SerializedName("ETF")
-        ETF("ETF"),
-        @SerializedName("IDX")
-        IDX("IDX"),
-        @SerializedName("COM")
-        COM("COM"),
-        @SerializedName("UNDCUR")
-        UNDCUR("UNDCUR"),
-        @SerializedName("CUR")
-        CUR("CUR"),
-        @SerializedName("FUTIVX")
-        FUTIVX("FUTIVX"),
-        @SerializedName("FUTSTK")
-        FUTSTK("FUTSTK"),
-        @SerializedName("FUTIDX")
-        FUTIDX("FUTIDX"),
-        @SerializedName("FUTCUR")
-        FUTCUR("FUTCUR"),
-        @SerializedName("FUTIRD")
-        FUTIRD("FUTIRD"),
-        @SerializedName("FUTIRC")
-        FUTIRC("FUTIRC"),
-        @SerializedName("FUTIRT")
-        FUTIRT("FUTIRT"),
-        @SerializedName("FUTIRF")
-        FUTIRF("FUTIRF"),
-        @SerializedName("FUTCOM")
-        FUTCOM("FUTCOM"),
-        @SerializedName("FUTBLN")
-        FUTBLN("FUTBLN"),
-        @SerializedName("FUTENR")
-        FUTENR("FUTENR"),
-        @SerializedName("FUTMET")
-        FUTMET("FUTMET"),
-        @SerializedName("FUTAGR")
-        FUTAGR("FUTAGR"),
-        @SerializedName("OPTIDX")
-        OPTIDX("OPTIDX"),
-        @SerializedName("OPTSTK")
-        OPTSTK("OPTSTK"),
-        @SerializedName("OPTCOM")
-        OPTCOM("OPTCOM"),
-        @SerializedName("OPTBLN")
-        OPTBLN("OPTBLN"),
-        @SerializedName("OPTENR")
-        OPTENR("OPTENR"),
-        @SerializedName("OPTAGR")
-        OPTAGR("OPTAGR"),
-        @SerializedName("OPTCUR")
-        OPTCUR("OPTCUR"),
-        @SerializedName("OPTIRC")
-        OPTIRC("OPTIRC"),
-        @SerializedName("OPTIRD")
-        OPTIRD("OPTIRD"),
-        @SerializedName("UNDCOM")
-        UNDCOM("UNDCOM"),
-        @SerializedName("AUCSO")
-        AUCSO("AUCSO"),
-        @SerializedName("FUTIDXSPR")
-        FUTIDXSPR("FUTIDXSPR"),
-        @SerializedName("FUTSTKSPR")
-        FUTSTKSPR("FUTSTKSPR"),
-        @SerializedName("FUTCURSPR")
-        FUTCURSPR("FUTCURSPR"),
-        @SerializedName("FUTIRTSPR")
-        FUTIRTSPR("FUTIRTSPR"),
-        @SerializedName("FUTIRCSPR")
-        FUTIRCSPR("FUTIRCSPR"),
-        @SerializedName("FUTIRDSPR")
-        FUTIRDSPR("FUTIRDSPR"),
-        @SerializedName("OPTCURSPR")
-        OPTCURSPR("OPTCURSPR"),
-        @SerializedName("OPTIRCSPR")
-        OPTIRCSPR("OPTIRCSPR"),
-        @SerializedName("FUTCOMSPR")
-        FUTCOMSPR("FUTCOMSPR"),
-        @SerializedName("OPTCOMSPR")
-        OPTCOMSPR("OPTCOMSPR"),
-        @SerializedName("UNDIRC")
-        UNDIRC("UNDIRC"),
-        @SerializedName("UNDIRD")
-        UNDIRD("UNDIRD"),
-        @SerializedName("UNDIRT")
-        UNDIRT("UNDIRT"),
-        @SerializedName("NONE")
-        NONE("NONE");
-
-        private String value;
-
-        InstrumentEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static InstrumentEnum fromValue(String input) {
-            for (InstrumentEnum b : InstrumentEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<InstrumentEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final InstrumentEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public InstrumentEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return InstrumentEnum.fromValue((String) (value));
-            }
-        }
-    }
-
     @SerializedName("instrument")
     private InstrumentEnum instrument = null;
 
@@ -166,72 +32,6 @@ public class SymbolDto {
 
     @SerializedName("isin")
     private String isin = null;
-
-    /**
-     * Gets or Sets exc
-     */
-    @JsonAdapter(ExcEnum.Adapter.class)
-    public enum ExcEnum {
-        @SerializedName("NSE")
-        NSE("NSE"),
-        @SerializedName("BSE")
-        BSE("BSE"),
-        @SerializedName("NFO")
-        NFO("NFO"),
-        @SerializedName("BFO")
-        BFO("BFO"),
-        @SerializedName("CDS")
-        CDS("CDS"),
-        @SerializedName("BCD")
-        BCD("BCD"),
-        @SerializedName("MCXSX")
-        MCXSX("MCXSX"),
-        @SerializedName("MCX")
-        MCX("MCX"),
-        @SerializedName("NCO")
-        NCO("NCO"),
-        @SerializedName("BCO")
-        BCO("BCO"),
-        @SerializedName("ICEX")
-        ICEX("ICEX");
-
-        private String value;
-
-        ExcEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ExcEnum fromValue(String input) {
-            for (ExcEnum b : ExcEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<ExcEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ExcEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public ExcEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ExcEnum.fromValue((String) (value));
-            }
-        }
-    }
 
     @SerializedName("exc")
     private ExcEnum exc = null;
@@ -260,68 +60,6 @@ public class SymbolDto {
     @SerializedName("streamSym")
     private String streamSym = null;
 
-    /**
-     * Gets or Sets segment
-     */
-    @JsonAdapter(SegmentEnum.Adapter.class)
-    public enum SegmentEnum {
-        @SerializedName("equity")
-        EQUITY("equity"),
-        @SerializedName("derivative")
-        DERIVATIVE("derivative"),
-        @SerializedName("derivative")
-        DERIVATIVE_2("derivative"),
-        @SerializedName("index")
-        INDEX("index"),
-        @SerializedName("commodity")
-        COMMODITY("commodity"),
-        @SerializedName("currency")
-        CURRENCY("currency"),
-        @SerializedName("spread")
-        SPREAD("spread"),
-        @SerializedName("derivative")
-        DERIVATIVE_7("derivative"),
-        @SerializedName("none")
-        NONE("none");
-
-        private String value;
-
-        SegmentEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static SegmentEnum fromValue(String input) {
-            for (SegmentEnum b : SegmentEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<SegmentEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final SegmentEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public SegmentEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return SegmentEnum.fromValue((String) (value));
-            }
-        }
-    }
-
     @SerializedName("segment")
     private SegmentEnum segment = null;
 
@@ -345,6 +83,17 @@ public class SymbolDto {
 
     @SerializedName("isWeeklyExpiry")
     private Boolean isWeeklyExpiry = null;
+
+    @SerializedName("asset")
+    private String asset = null;
+
+    public String getAsset() {
+        return asset;
+    }
+
+    public void setAsset(String asset) {
+        this.asset = asset;
+    }
 
     public Boolean getWeeklyExpiry() {
         return isWeeklyExpiry;
@@ -787,12 +536,13 @@ public class SymbolDto {
                 Objects.equals(this.freezeQty, symbolDto.freezeQty) &&
                 Objects.equals(this.tradingSymbol, symbolDto.tradingSymbol) &&
                 Objects.equals(this.otherExc, symbolDto.otherExc) &&
-                Objects.equals(this.isWeeklyExpiry, symbolDto.isWeeklyExpiry);
+                Objects.equals(this.isWeeklyExpiry, symbolDto.isWeeklyExpiry) &&
+                Objects.equals(this.asset, symbolDto.asset);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol, dispSym, instrument, baseSym, companyName, isin, exc, excTkn, series, lotSize, tickSize, expiryDate, optionType, strikePrice, streamSym, segment, fno, mtf, multiplier, freezeQty, isWeeklyExpiry);
+        return Objects.hash(symbol, dispSym, instrument, baseSym, companyName, isin, exc, excTkn, series, lotSize, tickSize, expiryDate, optionType, strikePrice, streamSym, segment, fno, mtf, multiplier, freezeQty, isWeeklyExpiry, asset);
     }
 
 
@@ -820,6 +570,7 @@ public class SymbolDto {
         sb.append("fno: ").append(toIndentedString(fno)).append("\n");
         sb.append("mtf: ").append(toIndentedString(mtf)).append("\n");
         sb.append("multiplier: ").append(toIndentedString(multiplier)).append("\n");
+        sb.append("asset: ").append(toIndentedString(asset)).append("\n");
         sb.append("freezeQty: ").append(toIndentedString(freezeQty)).append("\n");
         sb.append("tradingSymbol: ").append(toIndentedString(tradingSymbol)).append("\n");
         sb.append("otherExc: ").append(toIndentedString(otherExc)).append("\n");

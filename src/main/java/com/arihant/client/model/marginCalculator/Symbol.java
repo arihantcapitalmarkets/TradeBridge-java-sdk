@@ -1,8 +1,8 @@
 package com.arihant.client.model.marginCalculator;
 
-import com.arihant.client.model.orders.BrokerageChargeRequest;
-import com.arihant.client.model.orders.ModifyOrderRequest;
-import com.arihant.client.model.orders.PlaceOrderRequest;
+import com.arihant.client.enums.ExcEnum;
+import com.arihant.client.enums.InstrumentEnum;
+import com.arihant.client.enums.PrdTypeEnum;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,15 +11,15 @@ public class Symbol {
     private String symbol;
     private int netQty;
     private int lotSize;
-    private PlaceOrderRequest.InstrumentEnum instrument;
+    private InstrumentEnum instrument;
     private String streamSym;
     private String excToken;
-    private ModifyOrderRequest.ExcEnum exc;
-    private BrokerageChargeRequest.ProductEnum prdType;
+    private ExcEnum exc;
+    private PrdTypeEnum prdType;
     private List<String> brand;
 
 
-    public Symbol(String symbol, int netQty, int lotSize, PlaceOrderRequest.InstrumentEnum instrument, String streamSym, String excToken, ModifyOrderRequest.ExcEnum exc, BrokerageChargeRequest.ProductEnum prdType, List<String> brand) {
+    public Symbol(String symbol, int netQty, int lotSize, InstrumentEnum instrument, String streamSym, String excToken, ExcEnum exc, PrdTypeEnum prdType, List<String> brand) {
         this.symbol = symbol;
         this.netQty = netQty;
         this.lotSize = lotSize;
@@ -58,11 +58,11 @@ public class Symbol {
         this.lotSize = lotSize;
     }
 
-    public PlaceOrderRequest.InstrumentEnum getInstrument() {
+    public InstrumentEnum getInstrument() {
         return instrument;
     }
 
-    public void setInstrument(PlaceOrderRequest.InstrumentEnum instrument) {
+    public void setInstrument(InstrumentEnum instrument) {
         this.instrument = instrument;
     }
 
@@ -82,19 +82,19 @@ public class Symbol {
         this.excToken = excToken;
     }
 
-    public ModifyOrderRequest.ExcEnum getExc() {
+    public ExcEnum getExc() {
         return exc;
     }
 
-    public void setExc(ModifyOrderRequest.ExcEnum exc) {
+    public void setExc(ExcEnum exc) {
         this.exc = exc;
     }
 
-    public BrokerageChargeRequest.ProductEnum getPrdType() {
+    public PrdTypeEnum getPrdType() {
         return prdType;
     }
 
-    public void setPrdType(BrokerageChargeRequest.ProductEnum prdType) {
+    public void setPrdType(PrdTypeEnum prdType) {
         this.prdType = prdType;
     }
 

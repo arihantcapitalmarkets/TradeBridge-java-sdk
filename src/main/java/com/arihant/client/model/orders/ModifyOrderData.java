@@ -1,13 +1,9 @@
 package com.arihant.client.model.orders;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+import com.arihant.client.enums.OrdStatusEnum;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -17,64 +13,6 @@ import java.util.Objects;
 public class ModifyOrderData {
     @SerializedName("ordId")
     private String ordId = null;
-
-    /**
-     * Gets or Sets ordStatus
-     */
-    @JsonAdapter(OrdStatusEnum.Adapter.class)
-    public enum OrdStatusEnum {
-        @SerializedName("Executed")
-        EXECUTED("Executed"),
-        @SerializedName("Pending")
-        PENDING("Pending"),
-        @SerializedName("Cancelled")
-        CANCELLED("Cancelled"),
-        @SerializedName("Transit")
-        TRANSIT("Transit"),
-        @SerializedName("Rejected")
-        REJECTED("Rejected"),
-        @SerializedName("Requested")
-        REQUESTED("Requested"),
-        @SerializedName("None")
-        NONE("None");
-
-        private String value;
-
-        OrdStatusEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static OrdStatusEnum fromValue(String input) {
-            for (OrdStatusEnum b : OrdStatusEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<OrdStatusEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final OrdStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public OrdStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return OrdStatusEnum.fromValue((String) (value));
-            }
-        }
-    }
 
     @SerializedName("ordStatus")
     private OrdStatusEnum ordStatus = null;

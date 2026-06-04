@@ -2,6 +2,7 @@ package com.arihant.client.api.details;
 
 import com.arihant.client.*;
 import com.arihant.client.constants.Constants;
+import com.arihant.client.enums.InstrumentEnum;
 import com.arihant.client.model.details.HistoricalCandleDataResponse;
 import com.arihant.client.model.details.IntradayCandleDataRequest;
 import com.arihant.client.model.details.IntradayCandleDataResponse;
@@ -47,7 +48,7 @@ public class ChartApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call historicalDataCall(String symbol, String resolution, String from, String to, OrderTrailRequest.InstrumentEnum instrument, String exc, String streamSym, Map<String, String> propertiesMap) throws ApiException {
+    public com.squareup.okhttp.Call historicalDataCall(String symbol, String resolution, String from, String to, InstrumentEnum instrument, String exc, String streamSym, Map<String, String> propertiesMap) throws ApiException {
         // create path and map variables
         String localVarPath = constants.getEndPoints().get("historicalData");
 
@@ -91,7 +92,7 @@ public class ChartApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, null, localVarHeaderParams, localVarFormParams, localVarAuthNames, null);
     }
 
-    private com.squareup.okhttp.Call historicalDataValidateBeforeCall(String symbol, String resolution, String from, String to, OrderTrailRequest.InstrumentEnum instrument, String exc, String streamSym, Map<String, String> propertiesMap) throws ApiException {
+    private com.squareup.okhttp.Call historicalDataValidateBeforeCall(String symbol, String resolution, String from, String to, InstrumentEnum instrument, String exc, String streamSym, Map<String, String> propertiesMap) throws ApiException {
         // verify the required parameter 'symbol' is set
         if (symbol == null) {
             throw new ApiException("Missing the required parameter 'symbol' when calling historicalData(Async)");
@@ -141,7 +142,7 @@ public class ChartApi {
             String resolution,
             String from,
             String to,
-            OrderTrailRequest.InstrumentEnum instrument,
+            InstrumentEnum instrument,
             String exc,
             String streamSym,
             Map<String, String> propertiesMap
@@ -162,7 +163,7 @@ public class ChartApi {
      * @return ApiResponse&lt;HistoricalCandleDataResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<HistoricalCandleDataResponse> historicalDataWithHttpInfo(String symbol, String resolution, String from, String to, OrderTrailRequest.InstrumentEnum instrument, String exc, String streamSym, Map<String, String> propertiesMap) throws ApiException {
+    public ApiResponse<HistoricalCandleDataResponse> historicalDataWithHttpInfo(String symbol, String resolution, String from, String to, InstrumentEnum instrument, String exc, String streamSym, Map<String, String> propertiesMap) throws ApiException {
         com.squareup.okhttp.Call call = historicalDataValidateBeforeCall(symbol, resolution, from, to, instrument, exc, streamSym, propertiesMap);
         Type localVarReturnType = new TypeToken<HistoricalCandleDataResponse>() {
         }.getType();
