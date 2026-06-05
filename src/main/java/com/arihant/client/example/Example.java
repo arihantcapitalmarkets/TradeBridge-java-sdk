@@ -392,7 +392,7 @@ public class Example {
     }
 
     public void historicalCandleData(ChartApi chartApi, Map<String, String> properties) throws ApiException {
-        constants.setApiKey("eVyi720MYX1bTEiplt");
+        constants.setApiKey("EkXn*******UKfCC");
 
         System.out.println("\n\nHistoricalCandleDataResponse :  " +
                 chartApi.historicalData("TCS-EQ",
@@ -409,7 +409,7 @@ public class Example {
     }
 
     public void intradayCandleData(ChartApi chartApi, Map<String, String> properties) throws ApiException {
-        constants.setApiKey("eVyi720MYX1bTEiplt");
+        constants.setApiKey("EkXn*******UKfCC");
 
         IntradayCandleDataRequest data = new IntradayCandleDataRequest();
         data.setSymbol("JIOFIN-EQ");
